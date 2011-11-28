@@ -4,8 +4,9 @@ class CreateActionItems < ActiveRecord::Migration
       t.references :topic
       t.references :action_item_status
       t.string :description
-      t.timedate :due
+      t.datetime :due
       t.timestamps
     end
+    add_index("action_items", "topic_id")
   end
 end

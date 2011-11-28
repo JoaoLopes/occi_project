@@ -8,5 +8,6 @@ class CreateTopics < ActiveRecord::Migration
       t.text :conclusion
       t.timestamps
     end
+    add_index("topics", "meeting_id")
   end
 end
