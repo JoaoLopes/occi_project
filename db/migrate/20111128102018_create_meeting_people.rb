@@ -3,7 +3,8 @@ class CreateMeetingPeople < ActiveRecord::Migration
     create_table :meeting_people do |t|
       t.references :meeting
       t.references :user
-      t.boolean :manager
+      t.boolean :manager, :default => false
+      t.boolean :present, :default => true
       t.timestamps
     end
     add_index("meeting_people", "meeting_id")

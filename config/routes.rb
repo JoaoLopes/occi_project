@@ -1,4 +1,15 @@
 OcciProject::Application.routes.draw do
+
+  root :to => "public#index"
+
+  #get "public/index"
+
+  #get "public/show"
+
+  #get "access/menu"
+
+  #get "access/login"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

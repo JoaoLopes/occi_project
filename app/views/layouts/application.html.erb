@@ -1,14 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-  <title>OcciProject</title>
+  <title>eMeeting | <%= @page_title || "define page title please" %></title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+  <body>
+    <div id="header">
+      <h1>eMeeting</h1>
+    </div>
+    <div id="main">
+      <% if !flash[:notice].blank? %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
+      <div id="content">
+        <%= yield %>
+      </div>
+    </div>
+    <div id="footer">
+      <p id="copyright">&copy; João [Duro|Lopes|Marques]</p>
+    </div>
+  </body>
 </html>

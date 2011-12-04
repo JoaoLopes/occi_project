@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128102018) do
+ActiveRecord::Schema.define(:version => 20111204173202) do
 
   create_table "action_item_statuses", :force => true do |t|
     t.string   "name",       :limit => 15
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20111128102018) do
   create_table "action_items", :force => true do |t|
     t.integer  "topic_id"
     t.integer  "action_item_status_id"
+    t.integer  "user_id"
     t.string   "description"
     t.datetime "due"
     t.datetime "created_at"
@@ -29,11 +30,13 @@ ActiveRecord::Schema.define(:version => 20111128102018) do
   end
 
   add_index "action_items", ["topic_id"], :name => "index_action_items_on_topic_id"
+  add_index "action_items", ["user_id"], :name => "index_action_items_on_user_id"
 
   create_table "meeting_people", :force => true do |t|
     t.integer  "meeting_id"
     t.integer  "user_id"
-    t.boolean  "manager"
+    t.boolean  "manager",    :default => false
+    t.boolean  "present",    :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20111128102018) do
     t.datetime "datetime"
     t.string   "subject"
     t.text     "conclusion"
+    t.string   "user_link"
+    t.string   "manager_link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,7 +69,6 @@ ActiveRecord::Schema.define(:version => 20111128102018) do
   create_table "users", :force => true do |t|
     t.string   "email",                         :null => false
     t.string   "name",            :limit => 50
-    t.string   "password",        :limit => 40
     t.string   "salt"
     t.string   "hashed_password"
     t.datetime "created_at"
