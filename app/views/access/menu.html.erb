@@ -1,9 +1,44 @@
 <% @page_title = session[:username] %>
 
 <div id="topnav">
-	<%= session[:username] %> | <%= link_to("Logout",:action => 'logout') %>
+	<%= link_to(session[:username], {:action => 'edit'}) %> | <%= link_to("Logout",:action => 'logout') %>
 </div>
 
-<h1>Access#menu</h1>
+<br><br><br><br><br>
+<% if @next_meetings && @next_meetings.empty? == false %>
+	<h2>Next Meetings</h2>
+	<table>
+		<tr>
+			<th>Date</th>
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Subject</b></th>
+		</tr>
+		<% @next_meetings.each do |meeting| %>
+		<tr>
+			<td><%= meeting.datetime %></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= meetinf.subject %></td>
+		</tr>
+		<% end %>
+	</table>
+<% else %>
+	<h2>No next meetings found</h2>
+<% end %>
+<%= button_to "Schedule a new meeting", :action => "new" %></td>
 
-<h2> Work in progress</h2>
+<br><br><br><br><br>
+<% if @past_meetings && @past_meetings.empty? == false %>
+	<h2>Past meetings</h2>
+	<table>
+		<tr>
+			<th>Date</th>
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Subject</b></th>
+		</tr>
+		<% @past_meetings.each do |meeting| %>
+		<tr>
+			<td><%= meeting.datetime %></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= meeting.subject %></td>
+		</tr>
+		<% end %>
+	</table>
+<% else %>
+	<h2>No past meetings found</h2>
+<% end %>

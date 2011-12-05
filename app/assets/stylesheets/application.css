@@ -15,7 +15,7 @@ img { border: none; }
 table { border-collapse: collapse; }
 table tr th, table tr td { vertical-align: top; text-align: left; 
   padding: 3px; }
-  
+
 /* Structure */
 #header { height: 4em; padding-top: 1em; text-align: center; 
   background: #993120; color: #FFFFFF; }
