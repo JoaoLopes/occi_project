@@ -19,7 +19,14 @@ class Meeting < ActiveRecord::Base
   end
   
   def get_guests
-    return User.find_by_id(self.meeting_people.find_by_manager(true))
+    guests = []
+    meeting_people = self.meeting_people
+    meeting_people.each do |meet_person|
+      if !meet_person.manager
+        guests << User.find_by_id(meet_person.user_id)
+      end
+    end
+    return guests
   end
   
 end

@@ -1,5 +1,11 @@
 OcciProject::Application.routes.draw do
 
+  get "meeting/show"
+
+  get "meeting/new"
+
+  get "meeting/manage"
+
   root :to => "public#index"
 
   #get "public/index"

@@ -1,0 +1,57 @@
+
+User_link_id: <%= params[:id] %>
+<br><br><br>
+Called by <%= @meeting.get_manager.name || @meeting.get_manager.email %>
+<br><br>
+Subject: <%= @meeting.subject %>
+<br><br>
+<table>
+<tr>
+	<th>Email</th>
+	<th>Name</th>
+</tr>
+<% @meeting.get_guests.each do |guest| %>
+	<tr>
+		<td><%= guest.email %></td>
+		<td><%= guest.name %></td>
+	</tr>
+<% end %>
+</table>
+<% @meeting.topics.each do |topic| %>
+	<br><br>
+	<hr />
+	Title: <%= topic.title %>
+	<br>
+	<% if topic.time %>
+		Time: <%= topic.time %> m
+		<br>
+	<% end %>
+	<% if topic.description %>
+		Description: <%= topic.description %>
+		<br>
+	<% end %>
+	<br>
+	<% if !topic.action_items.blank? %>
+		Topics
+		<br>
+		<% topic.action_items.each do |item| %>
+			Description: <%= item.description %>
+			<br>
+			<% if item.due %>
+				Due: <%= item.due %>
+				<br>
+			<% end %>
+			<% if item.user.name %>
+				To: <%= item.user.name %>
+			<% else %>
+				To: <%= item.user.email %>
+			<% end %>
+			<br>
+			Status: <%= item.action_item_status.name %>
+			<br><br>
+		<% end %>
+	<% end %>
+<% end %>
+<br><br>
+
+<br><br>

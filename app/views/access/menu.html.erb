@@ -15,7 +15,7 @@
 		<% @next_meetings.each do |meeting| %>
 		<tr>
 			<td><%= meeting.datetime %></td>
-			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= meetinf.subject %></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= meeting.subject %></td>
 		</tr>
 		<% end %>
 	</table>
@@ -35,7 +35,7 @@
 		<% @past_meetings.each do |meeting| %>
 		<tr>
 			<td><%= meeting.datetime %></td>
-			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= meeting.subject %></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %></td>
 		</tr>
 		<% end %>
 	</table>

@@ -1,0 +1,199 @@
+<% @page_title = "New meeting" %>
+<script type="text/javascript">
+	$(function(){
+
+		// Accordion
+		$("#accordion").accordion({ header: "h3" });
+
+		// Tabs
+		$('#tabs').tabs();
+
+		// Dialog			
+		$('#dialog').dialog({
+			autoOpen: false,
+			width: 600,
+			buttons: {
+				"Ok": function() { 
+					$(this).dialog("close"); 
+				}, 
+				"Cancel": function() { 
+					$(this).dialog("close"); 
+				} 
+			}
+		});
+
+		// Dialog Link
+		$('#dialog_link').click(function(){
+			$('#dialog').dialog('open');
+			return false;
+		});
+
+		// Datepicker
+		$( "#datepicker" ).datepicker({ showAnim: 'fold' });
+
+
+		// Slider
+		$('#slider').slider({
+			range: true,
+			values: [17, 67]
+		});
+
+		// Progressbar
+		$("#progressbar").progressbar({
+			value: 20 
+		});
+
+		//hover states on the static widgets
+		$('#dialog_link, ul#icons li').hover(
+			function() { $(this).addClass('ui-state-hover'); }, 
+			function() { $(this).removeClass('ui-state-hover'); }
+		);
+		
+		$('#timepicker').timepicker();
+
+	});
+</script>
+
+<script type="text/javascript">
+	var topicsCounter = 0;
+	var removedTopicsCounter = 0;
+	
+	var guestsCounter = 0;
+	var removedGuestsCounter = 0;
+	
+	function addTopicRow() {
+		
+		var td = document.getElementById('tbt'+topicsCounter);
+		if (td != null) {
+			var btn =  document.createElement('input')
+			btn.setAttribute('type', "button");
+			btn.setAttribute('onmousedown', "removeTopic("+topicsCounter+");");
+			btn.setAttribute('value', "Remove");
+			td.appendChild(btn);
+		}
+		
+		topicsCounter++;
+		
+		var x = document.getElementById("topics");
+		var tr = document.createElement('tr');
+		tr.setAttribute('id', "rt"+topicsCounter);
+		td = document.createElement('td');
+		var newIn = document.createElement('input');
+		newIn.setAttribute('type', "text");
+		newIn.setAttribute('onFocus', "checkLastTopic("+topicsCounter+", this)");
+		newIn.setAttribute('placeholder',"New topic...");
+		td.appendChild(newIn);
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		newIn = document.createElement('input');
+		newIn.setAttribute('type', "text");
+		td.appendChild(newIn);
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		newIn = document.createElement('input');
+		newIn.setAttribute('type', "text");
+		td.appendChild(newIn);
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		td.setAttribute('id', 'tbt'+topicsCounter);
+		tr.appendChild(td);
+		x.appendChild(tr);
+	}
+	
+	function addGuestRow() {
+
+		var td = document.getElementById('tbg'+guestsCounter);
+		if (td != null) {
+			var btn =  document.createElement('input')
+			btn.setAttribute('type', "button");
+			btn.setAttribute('onmousedown', "removeGuest("+guestsCounter+");");
+			btn.setAttribute('value', "Remove");
+			td.appendChild(btn);
+		}
+
+		guestsCounter++;
+
+		var x = document.getElementById("guests");
+		var tr = document.createElement('tr');
+		tr.setAttribute('id', "rg"+guestsCounter);
+		td = document.createElement('td');
+		var newIn = document.createElement('input');
+		newIn.setAttribute('type', "text");
+		newIn.setAttribute('onFocus', "checkLastGuest("+guestsCounter+", this)");
+		newIn.setAttribute('placeholder',"New topic...");
+		td.appendChild(newIn);
+		tr.appendChild(td);
+
+		td = document.createElement('td');
+		newIn = document.createElement('input');
+		newIn.setAttribute('type', "text");
+		td.appendChild(newIn);
+		tr.appendChild(td);
+
+		td = document.createElement('td');
+		td.setAttribute('id', 'tbg'+guestsCounter);
+		tr.appendChild(td);
+		x.appendChild(tr);
+	}
+	
+	function removeTopic(num) {
+		var x = document.getElementById("topics");
+		var t = document.getElementById("rt"+num);
+		x.removeChild(t);
+		removedTopicsCounter++;
+	}
+	
+	function removeGuest(num) {
+		var x = document.getElementById("guests");
+		var t = document.getElementById("rg"+num);
+		x.removeChild(t);
+		removedGuestsCounter++;
+	}
+	
+	function checkLastTopic(num) {
+		if (num == topicsCounter)
+			addTopicRow()
+	}
+	
+	function checkLastGuest(num) {
+		if (num == guestsCounter)
+			addGuestRow()
+	}
+	
+	function init() {
+		addTopicRow();
+		addGuestRow();
+	}
+	window.onload = init;
+	
+</script>
+
+
+
+<p>Date: <input type="text" id="datepicker"></p>
+
+<p>Time: <input type="text" id="timepicker"></p>
+
+<p>Subject: <input type="text"></p>
+
+<table id="topics">
+	<tr>
+		<th>Title</th>
+		<th>Description (Optional)</th>
+		<th>Time (Optional)</th>
+		<th></th>
+	</tr>
+</table>
+<br><br><br>
+<table id="guests">
+	<tr>
+		<th>Email</th>
+		<th>Name</th>
+		<th></th>
+	</tr>
+</table>
+
+<%= submit_tag("Schedule") %>
