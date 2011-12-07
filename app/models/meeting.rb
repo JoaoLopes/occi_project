@@ -2,7 +2,9 @@ class Meeting < ActiveRecord::Base
   
   has_many :meeting_people
   has_many :users, :through => :meeting_people
-  has_many :topics
+  has_many :topics, :dependent => :destroy
+  
+  accepts_nested_attributes_for :topics, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   
   validates_presence_of :user_link
   validates_uniqueness_of :user_link

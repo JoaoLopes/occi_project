@@ -1,0 +1,8 @@
+<%= form_for @meeting do |f| %>
+  <%= f.error_messages %>
+  <p>
+	<%= f.label :datetime %><br />
+	<%= f.text_field :datetime %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
