@@ -1,8 +1,10 @@
-<%= form_for @meeting do |f| %>
-  <%= f.error_messages %>
-  <p>
-	<%= f.label :datetime %><br />
-	<%= f.text_field :datetime %>
-  </p>
+<%= form_for(@meeting, :url => {:action => 'create'}) do |f| %>
+  <p>Date: <input type="text" id="datepicker"></p>
+  <p>Time: <input type="text" id="timepicker"></p>
+  
+  <%= f.fields_for :topics do |builder| %>
+	<%= render "topic_fields", :f => builder %>
+  <% end %>
+  <p><%= link_to_add_fields "Add Topic", f, :topics %></p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

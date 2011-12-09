@@ -17,5 +17,14 @@ class MeetingController < ApplicationController
 
   def manage
   end
+  
+  
+
+  def create
+    logger.debug "\n\n\n##############################################################\n"
+    logger.debug "#{params[:meeting][:datetime]}\n"
+    logger.debug "##############################################################\n\n\n"
+    redirect_to(:action => 'new')
+  end
 
 end

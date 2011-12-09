@@ -1,0 +1,11 @@
+<p class="fields">
+  <%= f.label :title %>
+  <%= f.text_field :title, :placeholder => 'New Topic...', :onfocus => "add_topic(this)" %>
+  <%= f.label :description %>
+  <%= f.text_field :description, :placeholder => 'Optional...' %>
+  <%= f.label :duration_in_min %>
+  <%= f.text_field :time, :placeholder => 'Optional...' %>
+  <%= link_to_remove_fields "Remove", f %>
+  <%= button_tag "Remove", :style => "visibility:hidden", :onclick => "remove_fields(this);", :type => "button" %>
+  <br />
+</p>
