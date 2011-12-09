@@ -1,0 +1,15 @@
+<tr class="fields">
+	<td>
+  		<%= f.text_field :title, :placeholder => 'New Topic...', :onfocus => "add_topic(this)",:class=>"inputtable" %>
+  	</td>
+  	<td>
+  		<%= f.text_field :description, :placeholder => 'Optional...',:class=>"inputtable" %>
+	</td>
+  	<td>
+  		<%= f.text_field :time, :placeholder => 'Optional...',:class=>"inputtable" %>
+  	</td>
+  	<td>
+  		<%= link_to_remove_fields "Remove", f %>
+  		<%= button_tag "Remove", :style => "visibility:hidden;position:relative;top:6px;cursor: pointer;width:15px;", :onclick => "remove_fields(this);", :type => "button", :class=>"ui-icon ui-icon-circle-close" %>
+	</td>
+</tr>

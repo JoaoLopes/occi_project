@@ -55,127 +55,22 @@
 </script>
 
 <script type="text/javascript">
-	var topicsCounter = 0;
-	var removedTopicsCounter = 0;
-	
-	var guestsCounter = 0;
-	var removedGuestsCounter = 0;
-	
-	function addTopicRow() {
-		
-		var td = document.getElementById('tbt'+topicsCounter);
-		if (td != null) {
-			
-			
-			
-			var btn =  document.createElement('span')
-			btn.setAttribute('class', "ui-icon ui-icon-circle-close");
-			btn.setAttribute('onmousedown', "removeTopic("+topicsCounter+");");
-			btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
-			td.appendChild(btn);
-		}
-		
-		topicsCounter++;
-		
-		var x = document.getElementById("topics");
-		var tr = document.createElement('tr');
-		tr.setAttribute('id', "rt"+topicsCounter);
-		td = document.createElement('td');
-		var newIn = document.createElement('input');
-		newIn.setAttribute('type', "text");
-		newIn.setAttribute('class',"inputtable");
-		newIn.setAttribute('onFocus', "checkLastTopic("+topicsCounter+", this)");
-		newIn.setAttribute('placeholder',"New topic...");
-		td.appendChild(newIn);
-		tr.appendChild(td);
-		
-		td = document.createElement('td');
-		newIn = document.createElement('input');
-		newIn.setAttribute('type', "text");
-		newIn.setAttribute('class',"inputtable");
-		td.appendChild(newIn);
-		tr.appendChild(td);
-		
-		td = document.createElement('td');
-		newIn = document.createElement('input');
-		newIn.setAttribute('class',"inputtable");
-		newIn.setAttribute('type', "text");
-		newIn.setAttribute('style',"width:50px;");
-		td.appendChild(newIn);
-		tr.appendChild(td);
-		
-		td = document.createElement('td');
-		td.setAttribute('id', 'tbt'+topicsCounter);
-		tr.appendChild(td);
-		x.appendChild(tr);
-		
-		
-	}
-	
-	function addGuestRow() {
+	function add_topic(obj) {
+		var btn =  document.createElement('input')
+		btn.setAttribute('type', "button");
+		btn.setAttribute('onmousedown', "remove_fields(this);");
+		btn.setAttribute('value', "Remove");
+		$(obj).closest(".fields").append(btn);
 
-		var td = document.getElementById('tbg'+guestsCounter);
-		if (td != null) {
-			var btn =  document.createElement('input')
-			btn.setAttribute('type', "button");
-			btn.setAttribute('onmousedown', "removeGuest("+guestsCounter+");");
-			btn.setAttribute('value', "Remove");
-			td.appendChild(btn);
-		}
-
-		guestsCounter++;
-
-		var x = document.getElementById("guests");
-		var tr = document.createElement('tr');
-		tr.setAttribute('id', "rg"+guestsCounter);
-		td = document.createElement('td');
-		var newIn = document.createElement('input');
-		newIn.setAttribute('type', "text");
-		newIn.setAttribute('onFocus', "checkLastGuest("+guestsCounter+", this)");
-		newIn.setAttribute('placeholder',"New topic...");
-		td.appendChild(newIn);
-		tr.appendChild(td);
-
-		td = document.createElement('td');
-		newIn = document.createElement('input');
-		newIn.setAttribute('type', "text");
-		td.appendChild(newIn);
-		tr.appendChild(td);
-
-		td = document.createElement('td');
-		td.setAttribute('id', 'tbg'+guestsCounter);
-		tr.appendChild(td);
-		x.appendChild(tr);
+		document.getElementById("add_field_link").onclick();
+		obj.setAttribute('onfocus',"");
 	}
 	
-	function removeTopic(num) {
-		var x = document.getElementById("topics");
-		var t = document.getElementById("rt"+num);
-		x.removeChild(t);
-		removedTopicsCounter++;
-	}
-	
-	function removeGuest(num) {
-		var x = document.getElementById("guests");
-		var t = document.getElementById("rg"+num);
-		x.removeChild(t);
-		removedGuestsCounter++;
-	}
-	
-	function checkLastTopic(num) {
-		if (num == topicsCounter)
-			addTopicRow()
-	}
-	
-	function checkLastGuest(num) {
-		if (num == guestsCounter)
-			addGuestRow()
-	}
 	
 	function init() {
-		addTopicRow();
-		
 		getTodayDate();
+		document.getElementById("add_field_link").style.visibility = "hidden";
+		document.getElementById("add_field_link").onclick();
 	}
 	
 	function getTodayDate(){
@@ -184,6 +79,7 @@
 		var day = currentTime.getDate();
 		var year = currentTime.getFullYear();
 		document.getElementById('datepicker').value=day+'/'+month+'/'+year;
+		
 	}
 	window.onload = init;
 	
@@ -193,51 +89,7 @@
 	<h1>New Meeting</h1>
 	<p>Please fill in the form</p>
 	
-	<label>Date
-		<span class="small">Click to open Calendar</span>
-	</label>
-	<input type="text" id="datepicker" class="input">
-	
-	<label>Time
-		<span class="small">Click to open Time Picker</span>
-	</label>
-	<input type="text" id="timepicker" class="input">
-	
-	<label>Subject
-		<span class="small">Meeting Subject</span>
-	</label>
-	<input type="text" class="input">
-	<label><br>Guests
-		<span class="small">Paste your contacts</span>
-	</label>
-	<%= text_area_tag 'emails', nil ,:class=>"textarea1" %>
 	
 	
-	
-	
-	
-	<label>Topcis
-		<span class="small">Click tab to navigate</span>
-	</label>
-	
-	<table id="topics" style="position:relative;left:138px;">
-		<tr>
-			<th>
-		<span class="small" style="position:relative;left:15px;text-align:left;">Title</span>
-</th>
-			<th>
-		<span class="small" style="position:relative;left:15px;text-align:left;">Descritpion</span>
-</th>
-			<th>
-		<span class="small" style="width:60px;">Duration</span>
-</th>
-			<th></th>
-		</tr>
-	</table>
-	
-	<%= submit_tag "Schedule", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"left:800px"%>
-	
-	
+	<%= render :partial => 'form' %>
 </div>
-
-

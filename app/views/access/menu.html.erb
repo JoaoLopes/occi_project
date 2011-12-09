@@ -22,7 +22,7 @@
 <% else %>
 	<h2>No next meetings found</h2>
 <% end %>
-<%= button_to "Schedule a new meeting", :action => "new" %></td>
+<%= button_to "Schedule a new meeting", :controller => "meeting", :action => "new" %></td>
 
 <br><br><br><br><br>
 <% if @past_meetings && @past_meetings.empty? == false %>
