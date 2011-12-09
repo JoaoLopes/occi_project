@@ -32261,3 +32261,287 @@ Served asset /pepper-grinder/images/ui-bg_fine-grain_15_eceadf_60x60.png - 304 N
 
 Started GET "/assets/pepper-grinder/images/ui-icons_222222_256x240.png" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
 Served asset /pepper-grinder/images/ui-icons_222222_256x240.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+  Processing by PublicController#index as HTML
+Redirected to http://localhost:3000/access
+Completed 302 Found in 1ms
+
+
+Started GET "/access" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+  Processing by AccessController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mMeeting Load (0.0ms)[0m  SELECT "meetings".* FROM "meetings" INNER JOIN "meeting_people" ON "meetings"."id" = "meeting_people"."meeting_id" WHERE "meeting_people"."user_id" = 1
+Rendered access/menu.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 116ms (Views: 23.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/access.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /access.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/meeting.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /meeting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/jquery-ui-1.8.16.custom.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /pepper-grinder/jquery-ui-1.8.16.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /public.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/access.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /access.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-1.6.2.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /js/jquery-1.6.2.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-ui-1.8.16.custom.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /js/jquery-ui-1.8.16.custom.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery.ui.timepicker.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /js/jquery.ui.timepicker.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/meeting.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /meeting.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /public.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/images/img01.jpg" for 127.0.0.1 at 2011-12-09 17:51:56 +0000
+Served asset /images/img01.jpg - 304 Not Modified (0ms)
+
+
+Started GET "/access/edit" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+  Processing by AccessController#edit as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered access/edit.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 87ms (Views: 54.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/access.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /access.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/meeting.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /meeting.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/pepper-grinder/jquery-ui-1.8.16.custom.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /pepper-grinder/jquery-ui-1.8.16.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.css?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /public.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/access.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /access.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-1.6.2.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /js/jquery-1.6.2.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-ui-1.8.16.custom.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /js/jquery-ui-1.8.16.custom.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery.ui.timepicker.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /js/jquery.ui.timepicker.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/meeting.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /meeting.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /public.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/images/img01.jpg" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /images/img01.jpg - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_10_f8f7f6_60x60.png" for 127.0.0.1 at 2011-12-09 17:51:59 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_10_f8f7f6_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/access/" for 127.0.0.1 at 2011-12-09 17:53:59 +0000
+  Processing by AccessController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mMeeting Load (0.0ms)[0m  [1mSELECT "meetings".* FROM "meetings" INNER JOIN "meeting_people" ON "meetings"."id" = "meeting_people"."meeting_id" WHERE "meeting_people"."user_id" = 1[0m
+Rendered access/menu.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 182ms (Views: 38.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/access.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /access.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/meeting.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /meeting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/jquery-ui-1.8.16.custom.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /pepper-grinder/jquery-ui-1.8.16.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /public.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/access.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /access.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-ui-1.8.16.custom.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /js/jquery-ui-1.8.16.custom.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-1.6.2.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /js/jquery-1.6.2.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery.ui.timepicker.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /js/jquery.ui.timepicker.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/meeting.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /meeting.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/public.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /public.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/images/img01.jpg" for 127.0.0.1 at 2011-12-09 17:54:00 +0000
+Served asset /images/img01.jpg - 304 Not Modified (0ms)
+
+
+Started GET "/access/edit" for 127.0.0.1 at 2011-12-09 17:54:03 +0000
+  Processing by AccessController#edit as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered access/edit.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 98ms (Views: 44.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/access.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /access.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/public.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /public.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/jquery-ui-1.8.16.custom.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /pepper-grinder/jquery-ui-1.8.16.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/meeting.css?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /meeting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-1.6.2.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /js/jquery-1.6.2.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/access.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /access.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-ui-1.8.16.custom.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /js/jquery-ui-1.8.16.custom.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/meeting.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /meeting.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery.ui.timepicker.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /js/jquery.ui.timepicker.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /public.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/images/img01.jpg" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /images/img01.jpg - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_10_f8f7f6_60x60.png" for 127.0.0.1 at 2011-12-09 17:54:04 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_10_f8f7f6_60x60.png - 304 Not Modified (0ms)
