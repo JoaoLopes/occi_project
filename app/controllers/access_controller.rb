@@ -22,6 +22,10 @@
       end
     end
   end
+  
+  def new
+    
+  end
 
   def login
   end
