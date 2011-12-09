@@ -16,6 +16,7 @@
 		</label>
 		<%= password_field_tag :password,nil,:class=>"input" %>
 		<br>
-		<%= submit_tag "Log In", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"left:800px"%>
+		<%= submit_tag "Log In", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"left:750px;top:2px;"%>
+		<%= link_to "Cancel", {:controller=>"public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"width:70px;height:23px;left:750px;text-align: center;vertical-align:middle;padding: 5px;"} %>
 	<% end %>
 </div>

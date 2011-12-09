@@ -23,6 +23,8 @@
 		</label>
 		<%= f.password_field :password_confirmation,:class=>"input" %>
 		<br><br><br>
-		<%= submit_tag "Save", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"left:800px" %>
+		<%= submit_tag "Save", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"position:absolute;top:500px;left:1000px" %>
+		
 	<% end %>
+	<%= button_to "Cancel", {:action => "menu"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"position:absolute;top:500px;left:1070px"} %>
 </div>
