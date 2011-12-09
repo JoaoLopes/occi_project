@@ -7,21 +7,28 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div id="header">
-      <h1>eMeeting</h1>
-    </div>
-    <div id="main">
-      <% if !flash[:notice].blank? %>
-      <div class="notice">
-        <%= flash[:notice] %>
-      </div>
-      <% end %>
-      <div id="content">
-        <%= yield %>
-      </div>
-    </div>
-    <div id="footer">
-      <p id="copyright">&copy; João [Duro|Lopes|Marques]</p>
-    </div>
+  	
+  	<div id="page">
+	    <div id="header">
+	      <h1>eMeeting</h1>
+	    </div>
+	    <div id="main">
+	      <% if !flash[:notice].blank? %>
+	      <div class="ui-widget" style="width:auto;">
+	      	<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;width:auto;">
+	        	<p style="width:auto;"><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span><%= flash[:notice] %></p>
+        	</div>
+	      </div>
+	      <% end %>
+	      <div id="content">
+	        <%= yield %>
+	      </div>
+	    </div>
+	    <div id="footer">
+	      <p id="copyright">&copy; João [Duro|Lopes|Marques]</p>
+      	</div>
+      
+    </div>  	
+  	
   </body>
 </html>

@@ -29,7 +29,7 @@
 		});
 
 		// Datepicker
-		$( "#datepicker" ).datepicker({ showAnim: 'fold', showSpeed: 'slow', });
+		$( "#datepicker" ).datepicker({ showAnim: 'fold', showSpeed: 'slow', dateFormat: 'dd/mm/yy'});
 
 
 		// Slider
@@ -65,10 +65,13 @@
 		
 		var td = document.getElementById('tbt'+topicsCounter);
 		if (td != null) {
-			var btn =  document.createElement('input')
-			btn.setAttribute('type', "button");
+			
+			
+			
+			var btn =  document.createElement('span')
+			btn.setAttribute('class', "ui-icon ui-icon-circle-close");
 			btn.setAttribute('onmousedown', "removeTopic("+topicsCounter+");");
-			btn.setAttribute('value', "Remove");
+			btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
 			td.appendChild(btn);
 		}
 		
@@ -80,6 +83,7 @@
 		td = document.createElement('td');
 		var newIn = document.createElement('input');
 		newIn.setAttribute('type', "text");
+		newIn.setAttribute('class',"inputtable");
 		newIn.setAttribute('onFocus', "checkLastTopic("+topicsCounter+", this)");
 		newIn.setAttribute('placeholder',"New topic...");
 		td.appendChild(newIn);
@@ -88,12 +92,15 @@
 		td = document.createElement('td');
 		newIn = document.createElement('input');
 		newIn.setAttribute('type', "text");
+		newIn.setAttribute('class',"inputtable");
 		td.appendChild(newIn);
 		tr.appendChild(td);
 		
 		td = document.createElement('td');
 		newIn = document.createElement('input');
+		newIn.setAttribute('class',"inputtable");
 		newIn.setAttribute('type', "text");
+		newIn.setAttribute('style',"width:50px;");
 		td.appendChild(newIn);
 		tr.appendChild(td);
 		
@@ -101,6 +108,8 @@
 		td.setAttribute('id', 'tbt'+topicsCounter);
 		tr.appendChild(td);
 		x.appendChild(tr);
+		
+		
 	}
 	
 	function addGuestRow() {
@@ -165,35 +174,70 @@
 	
 	function init() {
 		addTopicRow();
-		addGuestRow();
+		
+		getTodayDate();
+	}
+	
+	function getTodayDate(){
+		var currentTime = new Date();
+		var month = currentTime.getMonth() + 1;
+		var day = currentTime.getDate();
+		var year = currentTime.getFullYear();
+		document.getElementById('datepicker').value=day+'/'+month+'/'+year;
 	}
 	window.onload = init;
 	
 </script>
 
+<div id="stylized" class="myform" style="height:100%;">
+	<h1>New Meeting</h1>
+	<p>Please fill in the form</p>
+	
+	<label>Date
+		<span class="small">Click to open Calendar</span>
+	</label>
+	<input type="text" id="datepicker" class="input">
+	
+	<label>Time
+		<span class="small">Click to open Time Picker</span>
+	</label>
+	<input type="text" id="timepicker" class="input">
+	
+	<label>Subject
+		<span class="small">Meeting Subject</span>
+	</label>
+	<input type="text" class="input">
+	<label><br>Guests
+		<span class="small">Paste your contacts</span>
+	</label>
+	<%= text_area_tag 'emails', nil ,:class=>"textarea1" %>
+	
+	
+	
+	
+	
+	<label>Topcis
+		<span class="small">Click tab to navigate</span>
+	</label>
+	
+	<table id="topics" style="position:relative;left:138px;">
+		<tr>
+			<th>
+		<span class="small" style="position:relative;left:15px;text-align:left;">Title</span>
+</th>
+			<th>
+		<span class="small" style="position:relative;left:15px;text-align:left;">Descritpion</span>
+</th>
+			<th>
+		<span class="small" style="width:60px;">Duration</span>
+</th>
+			<th></th>
+		</tr>
+	</table>
+	
+	<%= submit_tag "Schedule", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"left:800px"%>
+	
+	
+</div>
 
 
-<p>Date: <input type="text" id="datepicker"></p>
-
-<p>Time: <input type="text" id="timepicker"></p>
-
-<p>Subject: <input type="text"></p>
-
-<table id="topics">
-	<tr>
-		<th>Title</th>
-		<th>Description (Optional)</th>
-		<th>Time (Optional)</th>
-		<th></th>
-	</tr>
-</table>
-<br><br><br>
-<table id="guests">
-	<tr>
-		<th>Email</th>
-		<th>Name</th>
-		<th></th>
-	</tr>
-</table>
-
-<%= submit_tag("Schedule") %>

@@ -1,11 +1,9 @@
-﻿<h1>The place for you to organize your meetings</h1>
-
-<br>
-<br>
-
-<table align="center">
-	<tr>
-		<td><%= button_to "Create New Meeting", {:controller => "meeting", :action => "new"} %></td>
-		<td><%= button_to "Login", {:controller => "access", :action => "login"} %></td>
-	</tr>
-</table>
+﻿<div id="stylized" class="myform" style="height:100%;">
+	<h1>Welcome</h1>
+	<p>Here you can organize your meetings</p>
+	
+	<%= button_to "Create New Meeting", {:controller => "meeting", :action => "new"},:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px" %>
+	<br/>
+	<%= button_to "Login", {:controller => "access", :action => "login"},:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px" %>
+		
+</div>

@@ -6,7 +6,16 @@
  *= require_tree . 
 */
 
-html { height: 100%; width: 100%; }
+
+
+html {
+        background: url(images/img01.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
 body { width: 100%; min-width: 980px; height: 100%; margin: 0; padding: 0; 
   font: 14px Verdana,Lucida,Arial,Helvetica,sans-serif; color: #332318; }
 p, td, ul, ol, li, dl, dt, dd { 
@@ -16,16 +25,125 @@ table { border-collapse: collapse; }
 table tr th, table tr td { vertical-align: top; text-align: left; 
   padding: 3px; }
 
+/* TESTING*/
+#back{
+	width:100%;
+	height:100%;
+	background: url(images/img01.jpg);
+}
+
+
+#page {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+#page-bgtop {
+	background: url(images/img02.jpg) no-repeat left top;
+}
+
+#page-bgbtm {
+	overflow: hidden;
+	width: 100px;
+	padding: 10px;
+	background: url(images/img03.jpg) no-repeat left bottom;
+}
+
+
+/* TESTING FORM */
+.myform{
+height:100%;
+width:400px;
+padding:14px;
+
+}
+
+#stylized{
+
+}
+#stylized h1 {
+font-size:18px;
+font-weight:bold;
+margin-bottom:8px;
+}
+#stylized p{
+font-size:15px;
+color:#332318;
+margin-bottom:20px;
+border-bottom:solid 1px #332318;
+padding-bottom:10px;
+}
+#stylized label{
+display:block;
+font-weight:bold;
+text-align:right;
+width:140px;
+float:left;
+}
+#stylized span{
+display:block;
+font-weight:bold;
+text-align:right;
+width:140px;
+float:left;
+}
+#stylized .small{
+color:#332318;
+display:block;
+font-size:11px;
+font-weight:normal;
+text-align:right;
+width:140px;
+}
+#stylized .input{
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #aacfe4;
+width:200px;
+margin:2px 0 20px 10px;
+}
+#stylized .inputtable{
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #aacfe4;
+width:200px;
+margin:2px 0 5px 10px;
+}
+
+
+
+
+
+.textarea1{
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #aacfe4;
+width:400px;
+height:100px;
+margin:2px 0 10px 10px;
+position:relative;
+left:140px;
+}
+
+
 /* Structure */
 #header { height: 4em; padding-top: 1em; text-align: center; 
-  background: #993120; color: #FFFFFF; }
+  background: #993120; color: #FFFFFF; border: 2px solid;
+	border-radius: 25px 25px 0px 0px;}
+#header2 {  margin: -4px 0 0 -4px; padding: 4px; background: #aaaaaa url(eggplant/images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .60;filter:Alpha(Opacity=60); -moz-border-radius: 0px; -khtml-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px;}
 #header h1 { margin: 0; padding: 0; }
-#main { min-height: 500px; background: #F2DC87; }
+#main { min-height: 500px; background: #F2DC87;border: 2px solid;
+	}
 #navigation { float: left; width: 180px; min-height: 480px; padding: 10px; 
   background: #94B26F; color: #4C2516; }
 #content { padding: 10px; }
 #footer { clear: both; height: 2.5em; text-align: right;
-  background: #4C2516; color: #F2DC87; }
+  background: #4C2516; color: #F2DC87;border: 2px solid;
+	border-radius: 0px 0px 25px 25px;}
 #footer p { margin: 0; padding: 0.5em 1em; }
 
 #topnav { top: 10px; right:10px; text-align: right; }
