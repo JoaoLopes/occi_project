@@ -56,10 +56,11 @@
 
 <script type="text/javascript">
 	function add_topic(obj) {
-		var btn =  document.createElement('input')
-		btn.setAttribute('type', "button");
+		var btn =  document.createElement('span');
+		
 		btn.setAttribute('onmousedown', "remove_fields(this);");
-		btn.setAttribute('value', "Remove");
+		btn.setAttribute('class',"ui-icon ui-icon-circle-close");
+		btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
 		$(obj).closest(".fields").append(btn);
 
 		document.getElementById("add_field_link").onclick();

@@ -32080,3 +32080,184 @@ Served asset /pepper-grinder/images/ui-bg_fine-grain_15_f7f3de_60x60.png - 304 N
 
 Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_65_654b24_60x60.png" for 127.0.0.1 at 2011-12-09 17:23:53 +0000
 Served asset /pepper-grinder/images/ui-bg_fine-grain_65_654b24_60x60.png - 304 Not Modified (37ms)
+
+
+Started POST "/meeting/new" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+  Processing by MeetingController#new as HTML
+  Parameters: {"authenticity_token"=>"eG5eh9AaU2idjdn8YWv+q/95ZYrvll4YL6TV0C1OZZM="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered meeting/_topic_fields.html.erb (1.0ms)
+Rendered meeting/_form.html.erb (55.0ms)
+Rendered meeting/new.html.erb within layouts/application (57.0ms)
+Compiled application.js  (8ms)  (pid 10716)
+Completed 200 OK in 172ms (Views: 136.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/access.css?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /access.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/meeting.css?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /meeting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/jquery-ui-1.8.16.custom.css?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /pepper-grinder/jquery-ui-1.8.16.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.css?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /public.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/access.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /access.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-1.6.2.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /js/jquery-1.6.2.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-ui-1.8.16.custom.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /js/jquery-ui-1.8.16.custom.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery.ui.timepicker.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /js/jquery.ui.timepicker.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/meeting.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /meeting.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /public.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-09 17:43:56 +0000
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/assets/images/img01.jpg" for 127.0.0.1 at 2011-12-09 17:43:57 +0000
+Served asset /images/img01.jpg - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_10_f8f7f6_60x60.png" for 127.0.0.1 at 2011-12-09 17:43:57 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_10_f8f7f6_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_10_eceadf_60x60.png" for 127.0.0.1 at 2011-12-09 17:43:57 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_10_eceadf_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_15_ffffff_60x60.png" for 127.0.0.1 at 2011-12-09 17:43:57 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_15_ffffff_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_15_eceadf_60x60.png" for 127.0.0.1 at 2011-12-09 17:43:57 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_15_eceadf_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-icons_222222_256x240.png" for 127.0.0.1 at 2011-12-09 17:43:57 +0000
+Served asset /pepper-grinder/images/ui-icons_222222_256x240.png - 304 Not Modified (0ms)
+
+
+Started POST "/meeting/new" for 127.0.0.1 at 2011-12-09 17:45:06 +0000
+  Processing by MeetingController#new as HTML
+  Parameters: {"authenticity_token"=>"eG5eh9AaU2idjdn8YWv+q/95ZYrvll4YL6TV0C1OZZM="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered meeting/_topic_fields.html.erb (1.0ms)
+Rendered meeting/_form.html.erb (55.0ms)
+Rendered meeting/new.html.erb within layouts/application (58.0ms)
+Completed 200 OK in 121ms (Views: 81.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/access.css?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /access.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/meeting.css?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /meeting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/jquery-ui-1.8.16.custom.css?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /pepper-grinder/jquery-ui-1.8.16.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.css?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /public.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/access.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /access.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-1.6.2.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /js/jquery-1.6.2.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery-ui-1.8.16.custom.min.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /js/jquery-ui-1.8.16.custom.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/js/jquery.ui.timepicker.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /js/jquery.ui.timepicker.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/meeting.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /meeting.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/public.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /public.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/images/img01.jpg" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /images/img01.jpg - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_10_eceadf_60x60.png" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_10_eceadf_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_10_f8f7f6_60x60.png" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_10_f8f7f6_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_15_ffffff_60x60.png" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_15_ffffff_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-bg_fine-grain_15_eceadf_60x60.png" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /pepper-grinder/images/ui-bg_fine-grain_15_eceadf_60x60.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pepper-grinder/images/ui-icons_222222_256x240.png" for 127.0.0.1 at 2011-12-09 17:45:07 +0000
+Served asset /pepper-grinder/images/ui-icons_222222_256x240.png - 304 Not Modified (0ms)
