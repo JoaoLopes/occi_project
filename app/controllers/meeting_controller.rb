@@ -17,6 +17,26 @@ class MeetingController < ApplicationController
   end
 
   def manage
+    @meeting = Meeting.find_by_manager_link(params[:id])
+    if !@meeting
+        flash[:notice] = "Meeting not available!"
+        redirect_to :controller => 'access', :action => 'menu'
+        return
+    end
+    @manager = @meeting.get_manager
+    @emails = ""
+    count = 0
+    @meeting.get_guests.each do |guest|
+        if count != 0
+            @emails += ",\n"
+        end
+        if guest.name
+            @emails += "\""+guest.name+"\"<"+guest.email+">"
+        else
+            @emails += guest.email + ""
+        end
+        count += 1
+    end
   end
   
   
@@ -102,7 +122,7 @@ class MeetingController < ApplicationController
     end
     logger.debug "##############################################################\n\n\n"
     flash[:notice] = "Meeting created successfully."
-    redirect_to :action => "show"
+    redirect_to :action => "show", :id => @meeting.user_link
   end
 
 end

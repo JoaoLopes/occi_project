@@ -1,11 +1,11 @@
 
 <tr class="fields">
-	<td>
-  		<%= f.text_field :title, :placeholder => 'New Topic...', :onfocus => "add_topic(this)",:class=>"inputtable", :onBlur => "remove_blank(this)" %>
+  	<td>
+  		<%= f.text_field :title, :placeholder => 'New Topic...', :onfocus => "add_topic(this);" ,:class=>"inputtable", :onBlur => "remove_blank(this)" %>
   	</td>
   	<td>
   		<%= f.text_field :description, :placeholder => 'Optional...',:class=>"inputtable" %>
-	</td>
+  	</td>
   	<td>
   		<%= f.text_field :time, :placeholder => 'Optional...',:class=>"inputtable", :style=>"width:60px" %>
   	</td>

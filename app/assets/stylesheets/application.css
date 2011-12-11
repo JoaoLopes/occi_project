@@ -179,6 +179,17 @@ left:140px;
 #header { height: 4em; padding-top: 1em; text-align: center; 
   background: #993120; color: #FFFFFF; border: 2px solid;
 	border-radius: 25px 25px 0px 0px;}
+	
+	
+.title{
+	text-decoration:none;
+	margin:0;
+	display:block;
+	
+	font-weight:bold;
+	color: #FFFFFF
+}
+
 #header2 {  margin: -4px 0 0 -4px; padding: 4px; background: #aaaaaa url(eggplant/images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .60;filter:Alpha(Opacity=60); -moz-border-radius: 0px; -khtml-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px;}
 #header h1 { margin: 0; padding: 0; }
 #main { min-height: 500px; background: #F2DC87;border: 2px solid;

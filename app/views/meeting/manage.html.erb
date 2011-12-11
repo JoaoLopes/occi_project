@@ -1,2 +1,56 @@
-<h1>Meeting#manage</h1>
-<p>Find me in app/views/meeting/manage.html.erb</p>
+<% @page_title = "Manage meeting" %>
+<script type="text/javascript">
+	$(function(){
+
+		// Datepicker
+		$( "#datepicker" ).datepicker({ showAnim: 'fold', speed: 'slow', dateFormat: 'dd/mm/yy'});
+
+		$('#timepicker').timepicker({ showAnim: 'fold' });
+
+	});
+</script>
+
+<script type="text/javascript">
+	function add_topic(obj) {
+		var btn =  document.createElement('span');
+
+		btn.setAttribute('onmousedown', "remove_fields(this);");
+		btn.setAttribute('class',"ui-icon ui-icon-circle-close");
+		btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
+		$(obj).closest(".fields").append(btn);
+		
+		if (obj.value == "")
+			document.getElementById("add_field_link").onclick();
+		obj.setAttribute('onfocus',"");
+	}
+
+
+	function init() {
+		//add first empty topic
+		document.getElementById("add_field_link").onclick();
+		
+		if ("<%= @emails %>" != "") {
+			emails = document.getElementById("emails");
+			emails.value = "<%= @emails %>";
+			emails.onBlur
+		}
+		
+		$(".fields input").focus()
+	}
+
+	window.onload = init;
+
+</script>
+
+<div id="stylized" class="myform" style="height:100%;">
+	<h1>Manage Meeting</h1>
+	<p>Please edit your changes</p>
+
+	<%= form_for(@meeting, :url => {:action => 'update'}) do |builder| %>
+		<%= render :partial => 'form', :locals => {:f => builder, :manager => true} %>
+	<% end %>
+	
+	<%= submit_tag "Update", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:750px"%>
+	<%= link_to "Cancel", {:controller=>"public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"width:97px;height:23px;left:750px;text-align: center;vertical-align:middle;padding: 5px;"} %>
+	
+</div>
