@@ -146,7 +146,7 @@ left:140px;
 	border-radius: 0px 0px 25px 25px;}
 #footer p { margin: 0; padding: 0.5em 1em; }
 
-#topnav { top: 10px; right:10px; text-align: right; }
+.topnav {float:right;  top: 10px; right:10px; text-align: right; padding:2px}
 
 /* Content */
 #content h2 { color: #4C2516; }
