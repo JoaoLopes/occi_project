@@ -1,33 +1,73 @@
+<script type="text/javascript">
+
+	//trim
+	String.prototype.trim = function () {
+		return this.replace(/^\s+|\s+$/g,"");
+	}
+
+	//left trim
+	String.prototype.ltrim = function () {
+		return this.replace(/^\s+/,"");
+	}
+
+	//right trim
+	String.prototype.rtrim = function () {
+		return this.replace(/\s+$/,"");
+	}
+
+	function parse_emails(text_area) {
+		emails = text_area.value.split(",");
+		txt = "";
+		for (i=0;i<emails.length;i++) {
+			emails[i] = emails[i].trim();
+			if (emails[i].length == 0)
+				continue;
+			if (emails[i].indexOf('"') == -1 && emails[i].indexOf('<') != -1)
+				emails[i] = '"' + emails[i].substring(0,emails[i].indexOf('<')).trim() + '" ' + emails[i].substring(emails[i].indexOf('<')).trim();
+			if (i!=0)
+				txt += ",\n"
+			txt += emails[i];
+		}
+		text_area.value = txt;
+	}
+	
+	function remove_blank(obj) {
+		if (obj.value == "") {
+			obj.parentNode.parentNode.lastChild.onmousedown()
+		}
+	}
+</script>
+
 <%= form_for(@meeting, :url => {:action => 'create'}) do |f| %>	
 	<label>Called By
 		<span class="small">Email</span>
 	</label>
-	<input type="text" id="MUDAISTO" class="input">
+	<%= email_field_tag :manager_email, nil, :class=>"input", :placeholder => 'Email of the manager', :value => @manager ? @manager.email : "" %>
 	
 	<label>&nbsp;
 		<span class="small">Name</span>
 	</label>
-	<input type="text" id="MUDAISTO" class="input">
+	<%= text_field_tag 'manager_name' , nil, :class=>"input", :placeholder => 'Optional...', :value => @manager ? @manager.name : "" %>
 	
-  <label>Date
-		<span class="small">Click to open Calendar</span>
+	<label>Date
+		<span class="small">Click to Calendar Picker</span>
 	</label>
-	<input type="text" id="datepicker" class="input">
+	<%= text_field_tag 'date', nil, :id => "datepicker", :class => "input", :placeholder => 'Click me!', :value => @meeting.datetime ? @meeting.datetime.strftime("%d/%m/%Y") : (DateTime.now + 1.day).strftime("%d/%m/%Y") %>
 	
 	<label>Time
-		<span class="small">Click to open Time Picker</span>
+		<span class="small">Click to Time Picker</span>
 	</label>
-	<input type="text" id="timepicker" class="input">
+	<%= text_field_tag 'time', nil, :id => "timepicker", :class => "input", :placeholder => 'Click me!', :value => @meeting.datetime ? @meeting.datetime.strftime("%H:%M") : Time.at((DateTime.now.to_f / 5.minutes).round * 5.minutes).strftime("%H:%M") %>
 	
 	<label>Subject
 		<span class="small">Meeting Subject</span>
 	</label>
-	<%= f.text_field :subject ,:class=>"input"%>
+	<%= f.text_field :subject ,:class=>"input", :placeholder => 'This field is mandatory!' %>
 	
 	<label><br>Guests
-		<span class="small">Paste your contacts</span>
+		<span class="small">Paste your contacts (separated by commas)</span>
 	</label>
-	<%= text_area_tag 'emails', nil ,:class=>"textarea1" %>
+	<%= text_area_tag 'emails', nil ,:onBlur => "parse_emails(this);", :class=>"textarea1", :placeholder => 'Must have at least one mail' %>
 	
 	
 	<label>Topcis
