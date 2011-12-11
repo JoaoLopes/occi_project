@@ -71,4 +71,7 @@ User_link_id: <%= params[:id] %>
 			</tr>
 		<% end %>
 	</table>
+	<%= button_to "Cancel", {:controller => "public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"float:right;"} %>
 </div>
+
+
