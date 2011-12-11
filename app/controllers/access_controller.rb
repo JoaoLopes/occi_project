@@ -2,7 +2,7 @@
 
   layout 'application'
 
-  before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout]
+  before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout, :new, :create]
 
   def index
     menu
@@ -24,7 +24,24 @@
   end
   
   def new
-    
+    @user = User.new
+  end
+  
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      if @user.name
+        session[:username] = @user.name
+      else
+        session[:username] = @user.email
+      end
+      session[:user_id] = @user.id
+      flash[:notice] = "Account created successfully"
+      redirect_to(:action => "menu")
+    else
+      flash[:notice] = @user.errors.full_messages[0]
+      render('new');
+    end
   end
 
   def login

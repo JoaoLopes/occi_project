@@ -1,0 +1,30 @@
+<div id="stylized" class="myform" style="height:100%;">
+	<h1>New Account</h1>
+	<p>Please fill in the form</p>
+
+	<%= form_for(@user, :url => {:action => 'create'}) do |f| %>
+		<label>Name
+			<span class="small">Your name</span>
+		</label>
+		<%= f.text_field :name,:class=>"input"  %>
+
+		<label>Email
+			<span class="small">User account</span>
+		</label>
+		<%= f.email_field :email,:class=>"input"  %>
+
+		<label>Password
+			<span class="small">New Password</span>
+		</label>
+		<%= f.password_field :password,:class=>"input"  %>
+
+		<label>Password
+			<span class="small">Again</span>
+		</label>
+		<%= f.password_field :password_confirmation,:class=>"input" %>
+		<br><br><br>
+		<%= submit_tag "Create", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"position:absolute;top:500px;left:1000px" %>
+
+	<% end %>
+	<%= button_to "Cancel", {:controller => "public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"position:absolute;top:500px;left:1070px"} %>
+</div>
