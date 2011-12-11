@@ -28,7 +28,9 @@
   end
   
   def create
+    
     @user = User.new(params[:user])
+    
     if @user.save
       if @user.name
         session[:username] = @user.name
@@ -39,6 +41,26 @@
       flash[:notice] = "Account created successfully"
       redirect_to(:action => "menu")
     else
+      user_local = User.find_by_email(@user.email)
+      if user_local and user_local.hashed_password.blank?
+        user_local.name = @user.name
+        user_local.password = @user.password
+        user_local.password_confirmation = @user.password_confirmation
+        @user = user_local
+        if @user.save
+          if @user.name
+            session[:username] = @user.name
+          else
+            session[:username] = @user.email
+          end
+          session[:user_id] = @user.id
+          flash[:notice] = "Account created successfully"
+          redirect_to(:action => "menu")
+        else
+          flash[:notice] = @user.errors.full_messages[0]
+          render('new');
+        end
+      end
       flash[:notice] = @user.errors.full_messages[0]
       render('new');
     end
