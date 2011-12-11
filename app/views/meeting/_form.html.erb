@@ -49,9 +49,9 @@
 	</label>
 	<%= text_field_tag 'manager_name' , nil, :class=>"input", :placeholder => 'Optional...', :value => @manager ? @manager.name : "" %>
 	
-	</label>
+	<label>
 		<span class="small">Click to Calendar Picker</span>
-	<label>Date
+	</label>Date
 	<%= text_field_tag 'date', nil, :id => "datepicker", :class => "input", :placeholder => 'Click me!', :value => @meeting.datetime ? @meeting.datetime.strftime("%d/%m/%Y") : (DateTime.now + 1.day).strftime("%d/%m/%Y") %>
 	
 	<label>Time
