@@ -92,8 +92,9 @@
 	
 	<%= form_for(@meeting, :url => {:action => 'create'}) do |builder| %>
 		<%= render :partial => 'form', :locals => {:f => builder} %>
-	<% end %>
 	
-	<%= submit_tag "Schedule", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:750px"%>
+	
+		<%= submit_tag "Schedule", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:750px"%>
+	<% end %>
 	<%= link_to "Cancel", {:controller=>"public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"width:97px;height:23px;left:750px;text-align: center;vertical-align:middle;padding: 5px;"} %>
 </div>
