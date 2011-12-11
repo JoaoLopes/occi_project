@@ -36,9 +36,10 @@
 			obj.parentNode.parentNode.lastChild.onmousedown()
 		}
 	}
+
 </script>
 
-<%= form_for(@meeting, :url => {:action => 'create'}) do |f| %>	
+
 	<label>Called By
 		<span class="small">Email</span>
 	</label>
@@ -70,7 +71,7 @@
 	<%= text_area_tag 'emails', nil ,:onBlur => "parse_emails(this);", :class=>"textarea1", :placeholder => 'Must have at least one mail' %>
 	
 	
-	<label>Topics
+	<label>Topcis
 		<span class="small">Click tab to navigate</span>
 	</label>
 	<table id="topics" style="position:relative;left:138px;">
@@ -86,16 +87,12 @@
 			</th>
 			<th></th>
 		</tr>
+		<%= f.fields_for :topics do |builder| %>
+			<%= render "topic_fields", :f => builder %>
+		<% end %>
 		<tr id="fields">
 			<%= link_to_add_fields "Add Topic", f, :topics %>
-			<%= f.fields_for :topics do |builder| %>
-				<%= render "topic_fields", :f => builder %>
-			<% end %>
 		</tr>
 		
-  </table>
-  
-  <%= submit_tag "Schedule", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:750px"%>
-  <%= link_to "Cancel", {:controller=>"public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"width:97px;height:23px;left:750px;text-align: center;vertical-align:middle;padding: 5px;"} %>
-<% end %>
+</table>
 

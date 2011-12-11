@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111204173202) do
+ActiveRecord::Schema.define(:version => 20111211181451) do
 
   create_table "action_item_statuses", :force => true do |t|
     t.string   "name",       :limit => 15
@@ -44,15 +44,8 @@ ActiveRecord::Schema.define(:version => 20111204173202) do
   add_index "meeting_people", ["meeting_id"], :name => "index_meeting_people_on_meeting_id"
   add_index "meeting_people", ["user_id"], :name => "index_meeting_people_on_user_id"
 
-  create_table "meetings", :force => true do |t|
-    t.datetime "datetime"
-    t.string   "subject"
-    t.text     "conclusion"
-    t.string   "user_link"
-    t.string   "manager_link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "meetings" because of following StandardError
+#   Unknown type 'bolean' for column 'closed'
 
   create_table "topics", :force => true do |t|
     t.integer  "meeting_id"
