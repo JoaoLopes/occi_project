@@ -11,61 +11,99 @@
 			document.getElementById("account").style.visibility = "hidden";
 			
 		}
-		
-		
-		
 	}
+		
+	var nextHidden=false;
+	var pastHidden=true;
+	function hideShow(who){
+		if(who=='next'){
+			if(nextHidden){
+				document.getElementById(who).style.display = "block";
+				document.getElementById('btnnext').innerHTML="Hide past Meetings";
+			}else{
+				document.getElementById(who).style.display = "none";
+				document.getElementById('btnnext').innerHTML="Show past Meetings";
+			}
+			nextHidden=!nextHidden;
+		}else{
+			if(pastHidden){
+				document.getElementById(who).style.display = "block";
+				document.getElementById('btnpast').innerHTML="Hide past Meetings";
+			}else{
+				document.getElementById(who).style.display = "none";
+				document.getElementById('btnpast').innerHTML="Show past Meetings";
+			}
+			pastHidden=!pastHidden;
+		}
+	}
+		
 
 </script>
 
 <div class="topnav" onMouseOut="hide();" id="asd">
 	
 	<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" style="width:200px;height:35px" onMouseOver="show();" ><%=session[:username]%></button>
-	<div id="account" class="topnav" style="visibility:hidden;">
-		<%= button_to "Logout", {:action => 'logout'}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
+	
+	<div id="account" style="visibility:hidden;">
+		<br/>
+		
 		 
 		<%= button_to "Edit Account", {:action => 'edit'}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
-		<%= button_to "Schedule a new meeting", {:controller => "meeting", :action => "new"}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
+		
+		
+		<%= button_to "Logout", {:action => 'logout'}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
+		
 	</div>
 </div>
 
+<div style="float:right;position:relative;top: 9px;padding: 10px;">
+	<%= button_to "Schedule a new meeting", {:controller => "meeting", :action => "new"}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
+</div>
 
 
-
-<% if @next_meetings && @next_meetings.empty? == false %>
-	<h2>Next Meetings</h2>
-	<table>
-		<tr>
-			<th>Date</th>
-			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Subject</b></th>
-		</tr>
-		<% @next_meetings.each do |meeting| %>
-		<tr>
-			<td><%= meeting.datetime %></td>
-			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %></td>
-		</tr>
+<div id="stylized" class="myform" style="height:100%;">
+	<h1>Scheduled Meetings</h1>
+	<p style="border:none;"><button id="btnnext" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" style="width:200px;height:35px" onclick="hideShow('next');">Hide next Meetings</button></p>
+	<div id="next">
+		<% if @next_meetings && @next_meetings.empty? == false %>
+		<table>
+			<tr>
+				<th><span class="small" style="text-align:left;font-size:18px;">Subject</th>
+				<th><span class="small" style="text-align:left;font-size:18px;">Called by</th>
+				<th><span class="small" style="text-align:left;font-size:18px;">Date</th>
+			</tr>
+			<% @next_meetings.each do |meeting| %>
+			<tr>
+				<td><%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %></td>
+				<td><%= meeting.get_manager.name||meeting.get_manager.email%> </td>
+				<td><%= meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
+			</tr>
+			<% end %>
+		</table>
+		<% else %>
+			<p style="border:none;">You dont have scheduled meetings in the future</p>
 		<% end %>
-	</table>
-<% else %>
-	<h2>No next meetings found</h2>
-<% end %>
-
-
-<br><br><br><br><br>
-<% if @past_meetings && @past_meetings.empty? == false %>
-	<h2>Past meetings</h2>
-	<table>
-		<tr>
-			<th>Date</th>
-			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Subject</b></th>
-		</tr>
-		<% @past_meetings.each do |meeting| %>
-		<tr>
-			<td><%= meeting.datetime %></td>
-			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %></td>
-		</tr>
+	</div>
+	<p style="border-bottom-style:none;border-top-style:solid;"><br/><button id="btnpast" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" style="width:200px;height:35px" onclick="hideShow('past');">Show past Meetings</button></p>
+	<div id="past" style="display:none;">
+		<% if @past_meetings && @past_meetings.empty? == false %>
+			<table>
+				<tr>
+					<th><span class="small" style="text-align:left;font-size:18px;">Subject</th>
+					<th><span class="small" style="text-align:left;font-size:18px;">Called by</th>
+					<th><span class="small" style="text-align:left;font-size:18px;">Date</th>
+				</tr>
+				<% @past_meetings.each do |meeting| %>
+				<tr>
+					<td><%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %></td>
+					<td><%= meeting.get_manager.name||meeting.get_manager.email%> </td>
+					<td><%= meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
+				</tr>
+				<% end %>
+			</table>
+		<% else %>
+			<p style="border:none;">You dont have past meetings</p>
 		<% end %>
-	</table>
-<% else %>
-	<h2>No past meetings found</h2>
-<% end %>
+	</div>
+
+</div>
