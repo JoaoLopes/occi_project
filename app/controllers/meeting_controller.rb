@@ -39,11 +39,105 @@ class MeetingController < ApplicationController
     end
   end
   
+  def parse_users(emails = "")
+    guests = emails.split(',').map {|g| g.strip }
+    if guests.count == 0
+      return []
+    end
+
+    guest_list = []
+    guests.each do |guest|
+      logger.debug guest
+      if !guest.blank?
+
+        # split the fields
+        if guest.index('"')
+          name = guest.split('"')[1]
+          mail = guest.split('<')[1][0..-2]
+          user = User.find_by_email(mail)
+        else
+          mail = guest
+          name = nil
+        end
+
+        # check if user already exists, if not create him
+        user = User.find_by_email(mail)
+        if user
+          logger.debug "User exists"
+        else
+          logger.debug "Going to create"
+          user = User.new
+          user.email = mail
+          if name
+            user.name = name
+          end
+
+          # we might have problems
+          if !user.save
+            return guest_list
+          end
+        end
+        guest_list += [user]
+      end
+    end
+    return guest_list
+  end
+  
+  def update
+    logger.debug "\n\n\n##############################################################\n"
+    @meeting = Meeting.find_by_manager_link(params[:id])
+    if @meeting.update_attributes(params[:meeting])
+        date = params[:date].split("/").map {|n| n.to_i}
+        time = params[:time].split(":").map {|n| n.to_i}
+        @meeting.datetime = DateTime.civil_from_format("utc",date[2], date[1], date[0], time[0], time[1], 0)
+        @manager = User.find_by_email(params[:manager_email])
+        if @manager
+          logger.debug "Manager is "+@manager.name
+        else
+          logger.debug "Manager is going to be created"
+          @manager = User.new
+          @manager.email = params[:manager_email]
+          if params[:manager_name] != ''
+            @manager.name = params[:manager_name]
+          end
+          if !@manager.save
+            flash[:notice] = @manager.errors.full_messages
+            render :action => 'manage'
+            return
+          end
+        end
+        
+        guests = parse_users(params[:emails])
+        if guests.count == 0
+          flash[:notice] = "You must have at least one guest!"
+          render :action => 'manage'
+          return
+        end
+        
+        if !@meeting.save
+          flash[:notice] = @meeting.errors.full_messages
+          render :action => 'manage'
+          return
+        end
+        
+        guests.each do |guest|
+          @meeting.add_guest(guest)
+        end
+        
+        flash[:notice] = "Meeting "
+        redirect_to :action => 'show', :id => @meeting.user_link
+        return
+    else
+        
+    end
+    logger.debug "##############################################################\n\n\n"
+    #redirect_to :action => 'manage', :id => params[:id]
+  end
+  
   
 
   def create
     logger.debug "\n\n\n##############################################################\n"
-    logger.debug "#{params}\n"
     @manager = User.find_by_email(params[:manager_email])
     @meeting = Meeting.new(params[:meeting])
     if @manager
@@ -58,53 +152,17 @@ class MeetingController < ApplicationController
       if !@manager.save
         flash[:notice] = @manager.errors.full_messages
         render :action => 'new'
+        return
       end
     end
     
-    guests = params[:emails].split(',').map {|g| g.strip }
+    guests = parse_users(params[:emails])
     if guests.count == 0
       flash[:notice] = "You must have at least one guest!"
       render :action => 'new'
       return
     end
     
-    guest_list = []
-    guests.each do |guest|
-      logger.debug guest
-      if !guest.blank?
-      
-        # split the fields
-        if guest.index('"')
-          name = guest.split('"')[1]
-          mail = guest.split('<')[1][0..-2]
-          user = User.find_by_email(mail)
-        else
-          mail = guest
-          name = nil
-        end
-        
-        # check if user already exists, if not create him
-        user = User.find_by_email(mail)
-        if user
-          logger.debug "User exists"
-        else
-          logger.debug "Going to create"
-          user = User.new
-          user.email = mail
-          if name
-            user.name = name
-          end
-          
-          # we might have problems
-          if !user.save
-            flash[:notice] = user.errors.full_messages
-            render :action => 'new'
-            return
-          end
-        end
-        guest_list += [user]
-      end
-    end
     date = params[:date].split("/").map {|n| n.to_i}
     time = params[:time].split(":").map {|n| n.to_i}
     
@@ -117,7 +175,7 @@ class MeetingController < ApplicationController
       return
     end
     @meeting.set_manager(@manager)
-    guest_list.each do |guest|
+    guests.each do |guest|
       @meeting.add_guest(guest)
     end
     logger.debug "##############################################################\n\n\n"

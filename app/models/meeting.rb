@@ -22,6 +22,15 @@ class Meeting < ActiveRecord::Base
       return false
     end
     
+    #check previous manager and delete him if there is one
+    m = self.meeting_people.find_by_manager(true)
+    if m
+      if m.user_id != user.id
+        m.destroy
+      else
+        return true
+      end
+    end
     meet = MeetingPerson.new
     meet.user_id = user.id
     meet.meeting_id = self.id
@@ -32,6 +41,15 @@ class Meeting < ActiveRecord::Base
   def add_guest(user = nil)
     if !user
       return false
+    end
+
+    m = self.meeting_people.find_by_user_id(user.id)
+    if m
+      if m.manager
+        m.destroy
+      else
+        return true
+      end
     end
 
     meet = MeetingPerson.new
