@@ -1,10 +1,6 @@
 .bundle
 db/*.sqlite3
-<<<<<<< HEAD
-=======
 log/*.log
-tmp/
->>>>>>> 91dbb76ce06312cc6721c1fcacf08d025b465100
 .sass-cache/
 tmp/
 log/*.log
