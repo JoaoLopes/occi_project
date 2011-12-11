@@ -1,10 +1,35 @@
 <% @page_title = session[:username] %>
 
-<div id="topnav">
-	 <%= link_to("Logout",:action => 'logout') %>
-	<%= button_to "Edit Account", {:action => 'edit'}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
-	<%= button_to "Schedule a new meeting", {:controller => "meeting", :action => "new"}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
+<script type="text/javascript">
+	function show() {
+		
+		document.getElementById("account").style.visibility = "visible";
+	}
+	
+	function hide(){
+		if (event.srcElement.tagName == "DIV" && window.event.srcElement.id=="asd") {
+			document.getElementById("account").style.visibility = "hidden";
+			
+		}
+		
+		
+		
+	}
+
+</script>
+
+<div class="topnav" onMouseOut="hide();" id="asd">
+	
+	<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" style="width:200px;height:35px" onMouseOver="show();" ><%=session[:username]%></button>
+	<div id="account" class="topnav" style="visibility:hidden;">
+		<%= button_to "Logout", {:action => 'logout'}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
+		 
+		<%= button_to "Edit Account", {:action => 'edit'}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
+		<%= button_to "Schedule a new meeting", {:controller => "meeting", :action => "new"}, {:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only",:style=>"width:200px"} %>
+	</div>
 </div>
+
+
 
 
 <% if @next_meetings && @next_meetings.empty? == false %>
