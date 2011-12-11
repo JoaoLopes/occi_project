@@ -1,57 +1,74 @@
 
 User_link_id: <%= params[:id] %>
-<br><br><br>
-Called by <%= @meeting.get_manager.name || @meeting.get_manager.email %>
-<br><br>
-Subject: <%= @meeting.subject %>
-<br><br>
-<table>
-<tr>
-	<th>Email</th>
-	<th>Name</th>
-</tr>
-<% @meeting.get_guests.each do |guest| %>
-	<tr>
-		<td><%= guest.email %></td>
-		<td><%= guest.name %></td>
-	</tr>
-<% end %>
-</table>
-<% @meeting.topics.each do |topic| %>
-	<br><br>
-	<hr />
-	Title: <%= topic.title %>
-	<br>
-	<% if topic.time %>
-		Time: <%= topic.time %> m
-		<br>
-	<% end %>
-	<% if topic.description %>
-		Description: <%= topic.description %>
-		<br>
-	<% end %>
-	<br>
-	<% if !topic.action_items.blank? %>
-		Topics
-		<br>
-		<% topic.action_items.each do |item| %>
-			Description: <%= item.description %>
-			<br>
-			<% if item.due %>
-				Due: <%= item.due %>
-				<br>
-			<% end %>
-			<% if item.user.name %>
-				To: <%= item.user.name %>
-			<% else %>
-				To: <%= item.user.email %>
-			<% end %>
-			<br>
-			Status: <%= item.action_item_status.name %>
-			<br><br>
-		<% end %>
-	<% end %>
-<% end %>
-<br><br>
 
-<br><br>
+<div id="stylized" class="myform" style="height:100%;">
+	<h1><%= @meeting.subject %></h1>
+	<p>Called by <%= @meeting.get_manager.name || @meeting.get_manager.email %></p>
+</div>	
+<label class="label1">Date
+	<span class="small1"></span>
+</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@meeting.datetime.strftime("%d/%m/%Y %H:%M") %>
+<br>
+<label class="label1"style="position:relative;top:20px;">Guests
+	<span class="small1">Who will attend</span>
+</label>
+
+<table style="position:relative;left:50px;top:20px;">
+	<tr>
+		<th>
+			<span class="small1" style="text-align:left;font-size:14px;font-weight:bold;">Email</span>
+		</th>
+		<th>
+			<span class="small1" style="text-align:left;font-size:14px;font-weight:bold;">Name</span>
+		</th>
+	</tr>
+	<% @meeting.get_guests.each do |guest| %>
+		<tr>
+			<td><%= guest.email %></td>
+			<td><%= guest.name||  "-" %></td>
+		</tr>
+	<% end %>
+</table>
+
+<label class="label1" style="position:relative;top:20px;">Topics
+	<span class="small1">Meeting topics</span>
+</label>
+
+
+<div style="position:relative;left:20px;top:40px;float: left;display:block;">
+	<table>
+		<% @meeting.topics.each do |topic| %>
+			<tr style="height:70px;vertical-align: middle;border-bottom:solid 1px #332318;">
+				<td>
+					<label class="label2" style="float:none;width:250px;top:20px;t"><%= topic.title %>
+						<span class="small2"><%= topic.description || "-" %></span>
+						<span class="small2"><%= topic.time || "-" %> min</span>
+						
+					</label>
+				</td>
+				<td>
+					
+					<% if !topic.action_items.blank? %>
+						<table width="90%">
+							<tr>
+								<th>Action Item</th>
+								<th>Deadline</th>
+								<th>Responsible</th>
+								<th>Status</th>
+							</tr>
+							<% topic.action_items.each do |item| %>
+								<tr>
+									<td><%= item.description %></td>
+									<td><%= item.due.strftime("%d/%m/%Y") || "-"%></td>
+									<td><%= item.user.name || item.user.email%></td>
+									<td><%= item.action_item_status.name %></td>
+								</tr>
+							<% end %>
+						</table>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
