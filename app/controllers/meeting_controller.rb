@@ -28,12 +28,12 @@ class MeetingController < ApplicationController
     count = 0
     @meeting.get_guests.each do |guest|
         if count != 0
-            @emails += ",\n"
+            @emails += ","
         end
         if guest.name
-            @emails += "\""+guest.name+"\"<"+guest.email+">"
+            @emails += "\\\""+guest.name+"\\\"<"+guest.email+">"
         else
-            @emails += guest.email + ""
+            @emails += guest.email
         end
         count += 1
     end

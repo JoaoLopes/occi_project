@@ -31,8 +31,8 @@
 		
 		if ("<%= @emails %>" != "") {
 			emails = document.getElementById("emails");
-			emails.value = "<%= @emails %>";
-			emails.onBlur
+			emails.value = "<%= @emails.html_safe %>";
+			$("textarea").blur()
 		}
 		
 		$(".fields input").focus()
