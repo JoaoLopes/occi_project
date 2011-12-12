@@ -1,0 +1,8 @@
+<p>Hello,</p>
+
+you have been invited to a meeting.
+
+Called by <%= @meeting.get_manager.name || @meeting.get_manager.email%><br />
+Subject: <%= @meeting.subject %><br />
+
+<a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" > View meeting </a>

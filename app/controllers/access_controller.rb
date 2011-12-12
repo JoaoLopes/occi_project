@@ -102,7 +102,7 @@
         session[:username] = authorized_user.email
       end
       flash[:notice] = "You are logged in!"
-      UserMailer.hello_world(authorized_user).deliver
+      #UserMailer.hello_world(authorized_user).deliver
       redirect_to(:action => 'menu')
     else
       flash[:notice] = "Invalid username/password combination."

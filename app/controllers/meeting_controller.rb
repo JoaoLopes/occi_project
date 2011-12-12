@@ -151,6 +151,7 @@ class MeetingController < ApplicationController
   def create
     logger.debug "\n\n\n##############################################################\n"
     @manager = User.find_by_email(params[:manager_email])
+    @action_item_statuses = ActionItemStatus.all
     @meeting = Meeting.new(params[:meeting])
     if @manager
       logger.debug "Manager is "+@manager.name
@@ -189,6 +190,7 @@ class MeetingController < ApplicationController
     @meeting.set_manager(@manager)
     guests.each do |guest|
       @meeting.add_guest(guest)
+      UserMailer.guest_mail(@meeting, guest).deliver
     end
     logger.debug "##############################################################\n\n\n"
     flash[:notice] = "Meeting created successfully"

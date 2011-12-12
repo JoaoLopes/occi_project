@@ -6,4 +6,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => "#{user.name} <#{user.email}>", :subject => "Hi")
   end
   
+  def guest_mail(meeting, user)
+    @meeting = meeting
+    mail(:to => "#{user.name} <#{user.email}>", :subject => "A new meeting awaits you")
+  end
+  
 end
