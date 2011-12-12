@@ -11,10 +11,13 @@
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".fields").hide();
+  $(link).parent(".fields").next().hide();
 }
 
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $("#fields").before(content.replace(regexp, new_id));
+  var regexp = new RegExp("new_" + association, "g");
+  $(link).next().children().children("#fields").before(content.replace(regexp, new_id));
+  //$(link).next().children().children(".action_items").children().children("#add_field_link_action_item").click();
+  
 }

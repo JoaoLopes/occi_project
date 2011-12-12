@@ -63,14 +63,25 @@
 		btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
 		$(obj).closest(".fields").append(btn);
 
-		document.getElementById("add_field_link").onclick();
+		document.getElementById("add_field_link_topic").onclick();
+		obj.setAttribute('onfocus',"");
+	}
+	
+	function add_action(obj) {
+		var btn =  document.createElement('span');
+
+		btn.setAttribute('onmousedown', "remove_fields(this);");
+		btn.setAttribute('class',"ui-icon ui-icon-circle-close");
+		btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
+		$(obj).closest(".fields").append(btn);
+
 		obj.setAttribute('onfocus',"");
 	}
 	
 	
 	function init() {
 		//add first topic
-		document.getElementById("add_field_link").onclick();
+		document.getElementById("add_field_link_topic").onclick();
 	}
 	
 	//not used anymore
@@ -96,6 +107,6 @@
 	
 		<%= submit_tag "Schedule", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:750px"%>
 	
-	<%= link_to "Cancel", {:controller=>"public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"width:97px;height:23px;left:750px;text-align: center;vertical-align:middle;padding: 5px;"} %>
+		<%= link_to "Cancel", {:controller=>"public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"width:97px;height:23px;left:750px;text-align: center;vertical-align:middle;padding: 5px;"} %>
 	<% end %>
 </div>

@@ -11,3 +11,31 @@
   	</td>
   	<%= link_to_remove_fields "Remove", f %>
 </tr>
+<% if params[:action] != 'new' %>
+<tr class="action_items" style="border-bottom:dashed 1px #332318">
+  <td colspan="3">
+      <table id="action_items">
+        <tr>
+          <th>
+          <span class="small" style="position:relative;left:15px;text-align:left;">Action Item </span>
+          </th>
+          <th>
+          <span class="small" style="position:relative;left:15px;text-align:left;">Responsible</span>
+          </th>
+          <th>
+          <span class="small" style="width:60px;">Deadline</span>
+          </th>
+          <th>
+          <span class="small" style="width:60px;">Status</span>
+          </th>
+        </tr>
+        <%= f.fields_for :action_items do |builder| %>
+          <%= render "action_items_fields", :f => builder %>
+        <% end %>
+        <tr id="fields">
+          <%= link_to_add_fields "Add Action Item", f, :action_items %>
+        </tr>
+      </table>
+  </td>
+</tr>
+<% end %>

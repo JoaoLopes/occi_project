@@ -1,0 +1,16 @@
+
+<tr class="fields">
+	<td>
+		<%= f.text_field :description, :placeholder => 'New Task...', :class=>"inputtable", :onfocus => "add_action(this)", :onBlur => "remove_blank(this)" %>
+	</td>
+	<td>
+		<%= f.text_field :user, :placeholder => 'Responsable', :class=>"inputtable", :style=>"width:110px;" %>
+	</td>
+	<td>
+		<%= f.text_field :due, :placeholder => 'Deadline', :class=>"inputtable", :id => "datepicker",:style=>"width:80px;" %>
+	</td>
+	<td>
+		<%= f.text_field :action_item_status, :class=>"inputtable", :placeholder => 'Status',:style=>"width:60px;" %>
+	</td>
+	<%= link_to_remove_fields "Remove", f %>
+</tr>
