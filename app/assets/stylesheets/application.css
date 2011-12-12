@@ -208,3 +208,18 @@ left:140px;
 #content h2 { color: #4C2516; }
 
 .login form { margin: 100px 250px; }
+
+
+/* Meeting info */
+
+#meeting-info { color: #332318; }
+#meeting-info tr { height: 20px; }
+#meeting-info td.context { text-align:right; padding-right: 20px; width: 120px; }
+#meeting-info h1 { font-size: 14px; font-weight: bold; margin: 0px; color: inherit;}
+#meeting-info h2 { font-size: 12px; font-weight: bold; margin: 0px; color: inherit;}
+#meeting-info h3 { font-size: 11px; font-weight: bold; margin: 0px; color: inherit;}
+#meeting-info small { font-size: 11px; font-weight:lighter; }
+#meeting-info ul#topics { font-size: 12px;  width: 500px; list-style-type: none; padding: 0px;}
+#meeting-info ul#topics > li { border-top: solid 1px #332318; padding: 20px 0; }
+#meeting-info ul.subtopics { font-size: 10px; list-style-type: none; padding: 0 0 0 20px; margin-top: 15px;}
+#meeting-info ul.subtopics li { border-top: dashed 1px #332318; padding: 8px 0;border-bottom: dashed 1px #332318; }

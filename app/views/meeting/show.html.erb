@@ -4,74 +4,73 @@ User_link_id: <%= params[:id] %>
 <div id="stylized" class="myform" style="height:100%;">
 	<h1><%= @meeting.subject %></h1>
 	<p>Called by <%= @meeting.get_manager.name || @meeting.get_manager.email %></p>
-</div>	
-<label class="label1">Date
-	<span class="small1"></span>
-</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@meeting.datetime.strftime("%d/%m/%Y %H:%M") %>
-<br>
-<label class="label1"style="position:relative;top:20px;">Guests
-	<span class="small1">Who will attend</span>
-</label>
-
-<table style="position:relative;left:50px;top:20px;">
-	<tr>
-		<th>
-			<span class="small1" style="text-align:left;font-size:14px;font-weight:bold;">Email</span>
-		</th>
-		<th>
-			<span class="small1" style="text-align:left;font-size:14px;font-weight:bold;">Name</span>
-		</th>
-	</tr>
-	<% @meeting.get_guests.each do |guest| %>
-		<tr>
-			<td><%= guest.email %></td>
-			<td><%= guest.name||  "-" %></td>
-		</tr>
-	<% end %>
-</table>
-
-<label class="label1" style="position:relative;top:20px;">Topics
-	<span class="small1">Meeting topics</span>
-</label>
-
-
-<div style="position:relative;left:20px;top:40px;float: left;display:block;">
-	<table>
-		<% @meeting.topics.each do |topic| %>
-			<tr style="height:70px;vertical-align: middle;border-bottom:solid 1px #332318;">
-				<td>
-					<label class="label2" style="float:none;width:250px;top:20px;t"><%= topic.title %>
-						<span class="small2"><%= topic.description || "-" %></span>
-						<span class="small2"><%= topic.time || "-" %> min</span>
-						
-					</label>
-				</td>
-				<td>
-					
-					<% if !topic.action_items.blank? %>
-						<table width="90%">
-							<tr>
-								<th>Action Item</th>
-								<th>Deadline</th>
-								<th>Responsible</th>
-								<th>Status</th>
-							</tr>
-							<% topic.action_items.each do |item| %>
-								<tr>
-									<td><%= item.description %></td>
-									<td><%= item.due.strftime("%d/%m/%Y") || "-"%></td>
-									<td><%= item.user.name || item.user.email%></td>
-									<td><%= item.action_item_status.name %></td>
-								</tr>
-							<% end %>
-						</table>
-					<% end %>
-				</td>
-			</tr>
-		<% end %>
-	</table>
-	<%= button_to "Cancel", {:controller => "public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"float:right;"} %>
 </div>
+
+<table id="meeting-info">
+	<tr>
+		<td class="context"><h1>Date</h1></td>
+		<td><%=@meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
+	</tr>
+	
+	<tr>
+		<td class="context">
+			<h1>Guests</h1>
+			<small>Who will attend</small>
+		</td>
+		<td style="line-height:200%;">
+			<% @meeting.get_guests.each do |guest| %>
+				<% if guest.name%>
+					<%=guest.name%>( <%= guest.email %> )
+				<% else%>
+					<%= guest.email%>
+				<%end%>
+				<br>
+			<% end %>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class="context"><h1>Topics</h1><small>Meeting Topics</small></td>
+		<td style="line-height:130%;">
+			<ul id="topics">
+				<% @meeting.topics.each do |topic| %>
+					<h2><%= topic.title %><small style="font-weight:bold;"><%= (" - "+topic.time.to_s+" min") || "-" %></small></h2>
+					
+					<%= topic.description || "-" %>
+					<% if !topic.action_items.blank? %>
+				
+						<ul class="subtopics">
+							<li>
+								<table>
+									<tr>
+										<th>Action Item</th>
+										<th>Responsible</th>
+										<th>Deadline</th>
+										<th>Status</th>
+									</tr>
+									<% topic.action_items.each do |item| %>
+										<tr>
+											
+											<td><%= item.description %></td>
+											<td><%= item.user.name || item.user.email%></td>
+											<td><%= item.due.strftime("%d/%m/%Y") || "-"%></td>
+											<td><%= item.action_item_status.name %></td>
+											
+										</tr>
+									<% end %>
+								</table>
+							</li>
+							<br>
+						</ul>
+					<%end%>
+					<h2>&nbsp;</h2>
+				<% end %>
+			</ul>
+		</td>
+	</tr>
+</table>
+<%= button_to "Back", {:controller => "public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"left: 90%;"} %>
+	
+
 
 
