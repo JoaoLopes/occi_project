@@ -74,7 +74,13 @@
 			</tr>
 			<% @next_meetings.each do |meeting| %>
 			<tr>
-				<td><%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %></td>
+				<td>
+					<% if meeting.get_manager.id == session[:user_id] %>
+						<%= link_to(meeting.subject, {:controller => "meeting", :action => "manage", :id => meeting.manager_link}) %>
+					<%else%>
+						<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %>
+					<%end%>
+				</td>
 				<td><%= meeting.get_manager.name||meeting.get_manager.email%> </td>
 				<td><%= meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
 			</tr>
@@ -95,7 +101,13 @@
 				</tr>
 				<% @past_meetings.each do |meeting| %>
 				<tr>
-					<td><%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %></td>
+					<td>
+						<% if meeting.get_manager.id == session[:user_id] %>
+							<%= link_to(meeting.subject, {:controller => "meeting", :action => "manage", :id => meeting.manager_link}) %>
+						<%else%>
+							<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %>
+						<%end%>
+					</td>
 					<td><%= meeting.get_manager.name||meeting.get_manager.email%> </td>
 					<td><%= meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
 				</tr>

@@ -1,20 +1,6 @@
 OcciProject::Application.routes.draw do
 
-  get "meeting/show"
-
-  get "meeting/new"
-
-  get "meeting/manage"
-
   root :to => "public#index"
-
-  #get "public/index"
-
-  #get "public/show"
-
-  #get "access/menu"
-
-  #get "access/login"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
