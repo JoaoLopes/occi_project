@@ -1,7 +1,7 @@
 
 <tr class="fields">
   	<td>
-  		<%= f.text_field :title, :placeholder => 'New Topic...', :onfocus => "add_topic(this);" ,:class=>"inputtable", :onBlur => "remove_blank(this)" %>
+  		<%= f.text_field :title, :placeholder => 'New Topic...', :onfocus => "add_topic(this);" ,:class=>"inputtable", :onBlur => (params[:action] != 'new' && params[:action] != 'create' ) ? "remove_blank(this, true)" : "remove_blank(this, false)" %>
   	</td>
   	<td>
   		<%= f.text_field :description, :placeholder => 'Optional...',:class=>"inputtable" %>
