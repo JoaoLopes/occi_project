@@ -11,7 +11,7 @@
   	</td>
   	<%= link_to_remove_fields "Remove", f %>
 </tr>
-<% if params[:action] != 'new' %>
+<% if params[:action] != 'new' and params[:action] != 'create'%>
 <tr class="action_items" style="border-bottom:dashed 1px #332318">
   <td colspan="3">
       <table id="action_items">

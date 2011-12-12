@@ -71,6 +71,7 @@
 				<th><span class="small" style="text-align:left;font-size:18px;">Subject</th>
 				<th><span class="small" style="text-align:left;font-size:18px;">Called by</th>
 				<th><span class="small" style="text-align:left;font-size:18px;">Date</th>
+				<th></th>
 			</tr>
 			<% @next_meetings.each do |meeting| %>
 			<tr>
@@ -83,6 +84,11 @@
 				</td>
 				<td><%= meeting.get_manager.name||meeting.get_manager.email%> </td>
 				<td><%= meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
+				<td>
+					<%if meeting.closed == 't'%>
+						Closed
+					<%end%>
+				</td>
 			</tr>
 			<% end %>
 		</table>
@@ -98,6 +104,7 @@
 					<th><span class="small" style="text-align:left;font-size:18px;">Subject</th>
 					<th><span class="small" style="text-align:left;font-size:18px;">Called by</th>
 					<th><span class="small" style="text-align:left;font-size:18px;">Date</th>
+					<th></th>
 				</tr>
 				<% @past_meetings.each do |meeting| %>
 				<tr>
@@ -110,6 +117,11 @@
 					</td>
 					<td><%= meeting.get_manager.name||meeting.get_manager.email%> </td>
 					<td><%= meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
+					<td>
+						<%if meeting.closed == 't'%>
+							<b><%="Closed"%></b>
+						<%end%>
+					</td>
 				</tr>
 				<% end %>
 			</table>
