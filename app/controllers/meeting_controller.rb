@@ -124,7 +124,7 @@ class MeetingController < ApplicationController
           @meeting.add_guest(guest)
         end
         
-        flash[:notice] = "Meeting "
+        flash[:notice] = "Meeting Updated"
         redirect_to :action => 'show', :id => @meeting.user_link
         return
     else
@@ -179,7 +179,7 @@ class MeetingController < ApplicationController
       @meeting.add_guest(guest)
     end
     logger.debug "##############################################################\n\n\n"
-    flash[:notice] = "Meeting created successfully."
+    flash[:notice] = "Meeting created successfully"
     redirect_to :action => "show", :id => @meeting.user_link
   end
 

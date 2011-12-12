@@ -49,9 +49,9 @@
 	<%= form_for(@meeting, :url => {:action => 'update', :id => params[:id]}) do |builder| %>
 		<%= render :partial => 'form', :locals => {:f => builder, :manager => true} %>
 	
-		<%= submit_tag "Close Meeting", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:700px" %>
-		<%= submit_tag "Update", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:750px"%>
-		<%= link_to "Cancel", {:controller=>"public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"width:97px;height:23px;left:750px;text-align: center;vertical-align:middle;padding: 5px;"} %>
+		<%= submit_tag "Close Meeting", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:150%" %>
+		<%= submit_tag "Update", :class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"top: 2px;left:150%"%>
+		<%= link_to "Cancel", {:controller=>"public", :action => "index"},{:type=>"button",:class=>"ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style=>"width:97px;height:23px;left:150%;text-align: center;vertical-align:middle;padding: 5px;"} %>
 	<% end %>
 	
 </div>

@@ -40,7 +40,6 @@
 
 </script>
 
-
 <label>Called By
 	<span class="small">Email</span>
 </label>
@@ -51,9 +50,9 @@
 </label>
 <%= text_field_tag 'manager_name' , nil, :class=>"input", :placeholder => 'Optional...', :value => @manager ? @manager.name : "" %>
 
-<label>
+<label>Date
 	<span class="small">Click to Calendar Picker</span>
-</label>Date
+</label>
 <%= text_field_tag 'date', nil, :id => "datepicker", :class => "input", :placeholder => 'Click me!', :value => @meeting.datetime ? @meeting.datetime.strftime("%d/%m/%Y") : (DateTime.now + 1.day).strftime("%d/%m/%Y") %>
 
 <label>Time
@@ -92,6 +91,6 @@
 		<%= render "topic_fields", :f => builder %>
 	<% end %>
 	<tr id="fields">
+		<%= link_to_add_fields "Add Topic", f, :topics %>
 	</tr>
-	<%= link_to_add_fields "topic", f, :topics %>
 </table>
