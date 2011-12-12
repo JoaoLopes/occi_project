@@ -1,8 +1,10 @@
 <p>Hello,</p>
 
-you have been invited to a meeting.
+<p>you have been invited to a meeting.</p>
 
-Called by <%= @meeting.get_manager.name || @meeting.get_manager.email%><br />
-Subject: <%= @meeting.subject %><br />
+<p>Called by: <%= @meeting.get_manager.name || @meeting.get_manager.email%></p>
+<p>Subject: <%= @meeting.subject %></p>
 
-<a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" > View meeting </a>
+
+<p><%= @meeting.get_manager.name || @meeting.get_manager.email%> Would like to know if you are available to that meeting, please visit our website to confirm that you will be present.</p>
+<p><a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" > View meeting </a></p>

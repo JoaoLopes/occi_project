@@ -40,6 +40,7 @@
       session[:user_id] = @user.id
       flash[:notice] = "Account created successfully"
       redirect_to(:action => "menu")
+      return
     else
       user_local = User.find_by_email(@user.email)
       if user_local and user_local.hashed_password.blank?
@@ -56,13 +57,16 @@
           session[:user_id] = @user.id
           flash[:notice] = "Account created successfully"
           redirect_to(:action => "menu")
+          return
         else
           flash[:notice] = @user.errors.full_messages[0]
           render('new');
+          return
         end
       end
       flash[:notice] = @user.errors.full_messages[0]
       render('new');
+      return
     end
   end
 
