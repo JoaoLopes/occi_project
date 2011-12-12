@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211181451) do
+ActiveRecord::Schema.define(:version => 20111212184656) do
 
   create_table "action_item_statuses", :force => true do |t|
     t.string   "name",       :limit => 15
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20111211181451) do
     t.boolean  "present",    :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rsvp",       :default => "x"
   end
 
   add_index "meeting_people", ["meeting_id"], :name => "index_meeting_people_on_meeting_id"
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20111211181451) do
     t.string   "hashed_password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

@@ -48,6 +48,7 @@
         user_local.password = @user.password
         user_local.password_confirmation = @user.password_confirmation
         @user = user_local
+        @user.permalink = Meeting.get_new_link
         if @user.save
           if @user.name
             session[:username] = @user.name
@@ -55,6 +56,7 @@
             session[:username] = @user.email
           end
           session[:user_id] = @user.id
+          
           flash[:notice] = "Account created successfully"
           redirect_to(:action => "menu")
           return

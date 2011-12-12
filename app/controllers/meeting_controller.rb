@@ -25,7 +25,7 @@ class MeetingController < ApplicationController
         return
     end
     
-    if @meeting.closed=='t'
+    if @meeting.closed?
         flash[:notice] = "That meeting has been closed!"
         redirect_to :controller => 'meeting', :action => 'show', :id => @meeting.user_link
         return
@@ -195,6 +195,45 @@ class MeetingController < ApplicationController
     logger.debug "##############################################################\n\n\n"
     flash[:notice] = "Meeting created successfully"
     redirect_to :action => "show", :id => @meeting.user_link
+  end
+  
+  def rsvp
+    meeting = Meeting.find_by_user_link(params[:id])
+    
+    if !meeting
+      flash[:notice] = "That meeting is not available"
+      redirect_to :controller => 'public', :action => 'index'
+      return
+    end
+    
+    if meeting.closed == 't'
+      flash[:notice] = "That meeting is allready closed!"
+      redirect_to :controller => 'public', :action => 'index'
+      return
+    end
+    user = User.find_by_permalink(params[:user_id])
+    if !user
+      flash[:notice] = "That user doesnt exist in our app"
+      redirect_to :controller => 'public', :action => 'index'
+      return
+    end
+    
+    if meeting.get_guests.index(user)==-1
+      flash[:notice] = "You werent invited to this meeting"
+      redirect_to :controller => 'public', :action => 'index'
+      return
+    end
+    
+    answer = params[:rsvp]
+    if answer == '0'
+      @m = meeting.meeting_people.find_by_user_id(user.id)
+      @m.rsvp = 'n'
+      @m.save
+    else
+      @m = meeting.meeting_people.find_by_user_id(user.id)
+      @m.rsvp = 'a'
+      @m.save
+    end
   end
 
 end
