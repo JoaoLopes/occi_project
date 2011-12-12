@@ -25,7 +25,7 @@ class MeetingController < ApplicationController
         return
     end
     
-    if @meeting.closed?
+    if @meeting.closed=='t'
         flash[:notice] = "That meeting has been closed!"
         redirect_to :controller => 'meeting', :action => 'show', :id => @meeting.user_link
         return

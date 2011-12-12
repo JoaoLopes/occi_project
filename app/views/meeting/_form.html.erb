@@ -70,24 +70,7 @@
 </label>
 <%= text_area_tag 'emails', nil ,:onBlur => "parse_emails(this);", :class=>"textarea1", :placeholder => 'Must have at least one mail' %>
 
-<table style="left:100px;position:relative;">
-	<tr>
-		<th>Guest</th>
-		<th>RSVP</th>
-		<th>Present</th>
-	</tr>
-	<% @meeting.get_guests.each do |guest|%>
-		<tr>
-			<td><%=guest.name||guest.email%></td>
-			<td>
-				<% case @meeting.meeting_people.find_by_user_id(guest.id).rsvp %>
-					
-				<% end %>
-			</td>
-			<td></td>
-		</tr>
-	<% end %>
-</table>
+
 
 
 <label>Topics
