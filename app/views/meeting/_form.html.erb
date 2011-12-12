@@ -43,7 +43,7 @@
 <label>Called By
 	<span class="small">Email</span>
 </label>
-<%= email_field_tag :manager_email, nil, :class=>"input", :placeholder => 'Email of the manager', :value => @manager ? @manager.email : "" %>
+<%= email_field_tag :manager_email, nil, :class=>"input", :placeholder => 'Email of the manager', :value => @manager ? @manager.email : "", :id => 'email' %>
 
 <label>&nbsp;
 	<span class="small">Name</span>
@@ -53,7 +53,7 @@
 <label>Date
 	<span class="small">Click to Calendar Picker</span>
 </label>
-<%= text_field_tag 'date', nil, :id => "datepicker", :class => "input", :placeholder => 'Click me!', :value => @meeting.datetime ? @meeting.datetime.strftime("%d/%m/%Y") : (DateTime.now + 1.day).strftime("%d/%m/%Y") %>
+<%= text_field_tag 'date', nil, :class => "datepicker", :placeholder => 'Click me!', :value => @meeting.datetime ? @meeting.datetime.strftime("%d/%m/%Y") : (DateTime.now + 1.day).strftime("%d/%m/%Y") %>
 
 <label>Time
 	<span class="small">Click to Time Picker</span>
@@ -91,6 +91,6 @@
 		<%= render "topic_fields", :f => builder %>
 	<% end %>
 	<tr id="fields">
-		<%= link_to_add_fields "Add Topic", f, :topics %>
+		<%= link_to_add_fields "topic", f, :topics %>
 	</tr>
 </table>

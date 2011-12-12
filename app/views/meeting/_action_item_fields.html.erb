@@ -4,13 +4,14 @@
 		<%= f.text_field :description, :placeholder => 'New Task...', :class=>"inputtable", :onfocus => "add_action(this)", :onBlur => "remove_blank(this)" %>
 	</td>
 	<td>
-		<%= f.text_field :user, :placeholder => 'Responsable', :class=>"inputtable", :style=>"width:110px;" %>
+
+		<%= f.select :user_id, options_for_select(@meeting.users.map {|d| [d.name || d.email, d.id]}, :selected => f.object.user_id),:style=>"width:100px;" %>
 	</td>
 	<td>
-		<%= f.text_field :due, :placeholder => 'Deadline', :class=>"inputtable", :id => "datepicker",:style=>"width:80px;" %>
+		<%= f.text_field :due, :value => f.object.due ? f.object.due.strftime("%d/%m/%Y") : "-", :placeholder => 'Deadline', :class => "datepicker", :style=>"width:80px;" %>
 	</td>
 	<td>
-		<%= f.text_field :action_item_status, :class=>"inputtable", :placeholder => 'Status',:style=>"width:60px;" %>
+		<%= f.select :action_item_status_id, options_for_select(@action_item_statuses.map {|d| [d.name, d.id]}, :selected => f.object.action_item_status_id),:style=>"width:60px;" %>
 	</td>
 	<%= link_to_remove_fields "Remove", f %>
 </tr>

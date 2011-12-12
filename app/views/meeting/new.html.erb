@@ -1,58 +1,5 @@
 <% @page_title = "New meeting" %>
-<script type="text/javascript">
-	$(function(){
 
-		// Accordion
-		$("#accordion").accordion({ header: "h3" });
-
-		// Tabs
-		$('#tabs').tabs();
-
-		// Dialog			
-		$('#dialog').dialog({
-			autoOpen: false,
-			width: 600,
-			buttons: {
-				"Ok": function() { 
-					$(this).dialog("close"); 
-				}, 
-				"Cancel": function() { 
-					$(this).dialog("close"); 
-				} 
-			}
-		});
-
-		// Dialog Link
-		$('#dialog_link').click(function(){
-			$('#dialog').dialog('open');
-			return false;
-		});
-
-		// Datepicker
-		$( "#datepicker" ).datepicker({ showAnim: 'fold', speed: 'slow', dateFormat: 'dd/mm/yy'});
-
-
-		// Slider
-		$('#slider').slider({
-			range: true,
-			values: [17, 67]
-		});
-
-		// Progressbar
-		$("#progressbar").progressbar({
-			value: 20 
-		});
-
-		//hover states on the static widgets
-		$('#dialog_link, ul#icons li').hover(
-			function() { $(this).addClass('ui-state-hover'); }, 
-			function() { $(this).removeClass('ui-state-hover'); }
-		);
-		
-		$('#timepicker').timepicker({ showAnim: 'fold' });
-
-	});
-</script>
 
 <script type="text/javascript">
 	function add_topic(obj) {
@@ -82,6 +29,7 @@
 	function init() {
 		//add first topic
 		document.getElementById("add_field_link_topic").onclick();
+		$("#add_field_link_topic").hide()
 	}
 	
 	//not used anymore

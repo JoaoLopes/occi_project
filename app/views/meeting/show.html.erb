@@ -1,5 +1,6 @@
 
-User_link_id: <%= params[:id] %>
+User_link_id: <%= params[:id] %><br />
+<%= @meeting.closed %>
 
 <div id="stylized" class="myform" style="height:100%;">
 	<h1><%= @meeting.subject %></h1>
@@ -53,7 +54,7 @@ User_link_id: <%= params[:id] %>
 											
 											<td><%= item.description %></td>
 											<td><%= item.user.name || item.user.email%></td>
-											<td><%= item.due.strftime("%d/%m/%Y") || "-"%></td>
+											<td><%= item.due ? item.due.strftime("%d/%m/%Y") : "-"%></td>
 											<td><%= item.action_item_status.name %></td>
 											
 										</tr>

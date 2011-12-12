@@ -38,6 +38,13 @@ class Meeting < ActiveRecord::Base
     return meet.save
   end
   
+  def clear_guests
+    guests = self.meeting_people.where(:manager => false)
+    guests.each do |guest|
+      guest.destroy
+    end
+  end
+  
   def add_guest(user = nil)
     if !user
       return false

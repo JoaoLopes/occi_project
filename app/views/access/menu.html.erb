@@ -75,7 +75,7 @@
 			<% @next_meetings.each do |meeting| %>
 			<tr>
 				<td>
-					<% if meeting.get_manager.id == session[:user_id] %>
+					<% if meeting.get_manager.id == session[:user_id] and meeting.closed != 't' %>
 						<%= link_to(meeting.subject, {:controller => "meeting", :action => "manage", :id => meeting.manager_link}) %>
 					<%else%>
 						<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %>
@@ -102,7 +102,7 @@
 				<% @past_meetings.each do |meeting| %>
 				<tr>
 					<td>
-						<% if meeting.get_manager.id == session[:user_id] %>
+						<% if meeting.get_manager.id == session[:user_id] and meeting.closed != 't' %>
 							<%= link_to(meeting.subject, {:controller => "meeting", :action => "manage", :id => meeting.manager_link}) %>
 						<%else%>
 							<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %>

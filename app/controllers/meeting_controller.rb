@@ -18,11 +18,19 @@ class MeetingController < ApplicationController
 
   def manage
     @meeting = Meeting.find_by_manager_link(params[:id])
+    @action_item_statuses = ActionItemStatus.all
     if !@meeting
         flash[:notice] = "Meeting not available!"
-        redirect_to :controller => 'access', :action => 'menu'
+        redirect_to :controller => 'public', :action => 'index'
         return
     end
+    
+    if @meeting.closed?
+        flash[:notice] = "That meeting has been closed!"
+        redirect_to :controller => 'meeting', :action => 'show', :id => @meeting.user_link
+        return
+    end
+    
     @manager = @meeting.get_manager
     @emails = ""
     count = 0
@@ -119,11 +127,15 @@ class MeetingController < ApplicationController
           render :action => 'manage'
           return
         end
-        
+        @meeting.clear_guests
         guests.each do |guest|
           @meeting.add_guest(guest)
         end
         
+        if params[:commit] == "Close Meeting"
+            @meeting.closed = true
+            @meeting.save
+        end
         flash[:notice] = "Meeting Updated"
         redirect_to :action => 'show', :id => @meeting.user_link
         return

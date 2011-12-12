@@ -1,14 +1,4 @@
 <% @page_title = "Manage meeting" %>
-<script type="text/javascript">
-	$(function(){
-
-		// Datepicker
-		$( "#datepicker" ).datepicker({ showAnim: 'fold', speed: 'slow', dateFormat: 'dd/mm/yy'});
-
-		$('#timepicker').timepicker({ showAnim: 'fold' });
-
-	});
-</script>
 
 <script type="text/javascript">
 	function add_topic(obj) {
@@ -20,22 +10,34 @@
 		$(obj).closest(".fields").append(btn);
 		
 		if (obj.value == "")
-			document.getElementById("add_field_link").onclick();
+			document.getElementById("add_field_link_topic").onclick();
 		obj.setAttribute('onfocus',"");
 	}
 
+	function add_action(obj) {
+		var btn =  document.createElement('span');
+
+		btn.setAttribute('onmousedown', "remove_fields(this);");
+		btn.setAttribute('class',"ui-icon ui-icon-circle-close");
+		btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
+		$(obj).closest(".fields").append(btn);
+
+		obj.setAttribute('onfocus',"");
+	}
 
 	function init() {
 		//add first empty topic
-		document.getElementById("add_field_link").onclick();
+		$("#add_field_link_topic").hide();
+		document.getElementById("add_field_link_topic").onclick();
 		
-		if ("<%= @emails %>" != "") {
-			emails = document.getElementById("emails");
-			emails.value = "<%= @emails.html_safe %>";
-			$("textarea").blur()
-		}
-		
-		$(".fields input").focus()
+		<% if @emails %>
+			if ("<%= @emails %>" != "") {
+				emails = document.getElementById("emails");
+				emails.value = "<%= @emails.html_safe %>";
+				$("textarea").blur()
+			}
+		<% end %>
+		$(".inputtable").focus()
 	}
 
 	window.onload = init;
