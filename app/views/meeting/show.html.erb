@@ -1,7 +1,4 @@
 
-User_link_id: <%= params[:id] %><br />
-<%= @meeting.closed %>
-
 <div id="stylized" class="myform" style="height:100%;">
 	<h1><%= @meeting.subject %></h1>
 	<p>Called by <%= @meeting.get_manager.name || @meeting.get_manager.email %></p>

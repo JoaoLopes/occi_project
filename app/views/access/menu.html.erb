@@ -82,11 +82,11 @@
 						<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %>
 					<%end%>
 				</td>
-				<td><%= meeting.get_manager.name||meeting.get_manager.email%> </td>
+				<td><%= meeting.get_manager.id==session[:user_id]? "You" : meeting.get_manager.name||meeting.get_manager.email%> </td>
 				<td><%= meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
 				<td>
 					<%if meeting.closed == 't'%>
-						Closed
+						<b><%="Closed"%></b>
 					<%end%>
 				</td>
 			</tr>
@@ -115,7 +115,7 @@
 							<%= link_to(meeting.subject, {:controller => "meeting", :action => "show", :id => meeting.user_link}) %>
 						<%end%>
 					</td>
-					<td><%= meeting.get_manager.name||meeting.get_manager.email%> </td>
+					<td><%= meeting.get_manager.id==session[:user_id]? "You" : meeting.get_manager.name||meeting.get_manager.email%> </td>
 					<td><%= meeting.datetime.strftime("%d/%m/%Y %H:%M") %></td>
 					<td>
 						<%if meeting.closed == 't'%>
