@@ -21,6 +21,9 @@ function add_fields(link, association, content) {
   $(link).next().children().children("#fields").before(content.replace(regexp, new_id));
   //$(link).next().children().children(".action_items").children().children("#add_field_link_action_item").click();
   
+  // Datepicker
+  $( ".datepicker" ).datepicker({ showAnim: 'fold', speed: 'slow', dateFormat: 'dd/mm/yy'});
+  
 }
 
   $(function(){

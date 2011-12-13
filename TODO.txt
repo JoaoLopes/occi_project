@@ -1,6 +1,6 @@
 BUGS
-	Deadline no AI não aparece o datepicker
-	AI aparecem dois botoes seguidos e alguns bugs nos inputs
+	Deadline no AI não aparece o datepicker - Fixed by lopes
+	AI aparecem dois botoes seguidos e alguns bugs nos inputs - Fixed by lopes
 	
 	
 TODOs

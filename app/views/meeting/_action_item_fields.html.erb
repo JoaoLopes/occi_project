@@ -1,6 +1,6 @@
 <tr class="fields">
 	<td>
-		<%= f.text_field :description, :placeholder => 'New Task...', :class=>"inputtable", :onfocus => "add_action(this)", :onBlur => "remove_blank(this)" %>
+		<%= f.text_field :description, :placeholder => 'New Task...', :class=>"inputtable", :onfocus => "add_action(this)", :onBlur => (params[:action] != 'new' && params[:action] != 'create' ) ? "remove_blank(this, true)" : "remove_blank(this, false)" %>
 	</td>
 	<td>
 

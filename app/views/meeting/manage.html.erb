@@ -4,7 +4,7 @@
 	function add_topic(obj) {
 		var btn =  document.createElement('span');
 
-		btn.setAttribute('onmousedown', "remove_fields(this);");
+		btn.setAttribute('onmousedown', "remove_fields(this, true);");
 		btn.setAttribute('class',"ui-icon ui-icon-circle-close");
 		btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
 		$(obj).closest(".fields").append(btn);
@@ -17,12 +17,13 @@
 	function add_action(obj) {
 		var btn =  document.createElement('span');
 
-		btn.setAttribute('onmousedown', "remove_fields(this);");
+		btn.setAttribute('onmousedown', "remove_fields(this, true);");
 		btn.setAttribute('class',"ui-icon ui-icon-circle-close");
 		btn.setAttribute('style',"position:relative;top:6px;cursor: pointer;width:15px;");
 		$(obj).closest(".fields").append(btn);
 
 		obj.setAttribute('onfocus',"");
+		
 	}
 
 	function init() {
