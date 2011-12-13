@@ -1,7 +1,13 @@
 
 <div id="stylized" class="myform" style="height:100%;">
 	<h1><%= @meeting.subject %></h1>
-	<p>Called by <%= @meeting.get_manager.name || @meeting.get_manager.email %></p>
+	<p>Called by 
+		<% if @meeting.get_manager.name %>
+			<b><%= @meeting.get_manager.name %> (<%= @meeting.get_manager.email %>)</b>
+		<% else %>
+			<b><%= @meeting.get_manager.email %></b>
+		<% end %>
+	</p>
 </div>
 
 <table id="meeting-info">
@@ -18,7 +24,7 @@
 		<td style="line-height:200%;">
 			<% @meeting.get_guests.each do |guest| %>
 				<% if guest.name%>
-					<%=guest.name%>( <%= guest.email %> )
+					<%=guest.name%> (<%= guest.email %>)
 				<% else%>
 					<%= guest.email%>
 				<%end%>
@@ -32,7 +38,12 @@
 		<td style="line-height:130%;">
 			<ul id="topics">
 				<% @meeting.topics.each do |topic| %>
-					<h2><%= topic.title %><small style="font-weight:bold;"><%= (" - "+topic.time.to_s+" min") || "-" %></small></h2>
+					<h2><%= topic.title %><small style="font-weight:bold;">
+						<% if topic.time %>
+							  - <%= topic.time.to_s %> min	 
+						<% end %>						
+					</small></h2>
+					
 					
 					<%= topic.description || "-" %>
 					<% if !topic.action_items.blank? %>
