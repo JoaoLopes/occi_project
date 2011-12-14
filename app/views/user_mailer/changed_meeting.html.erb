@@ -1,9 +1,21 @@
 <p>Hello,</p>
 
-<p>a meeting that you were invited for was updated.</p>
-
+<p>A meeting that you were invited for was updated.</p>
+<p>Date: <%= @meeting.datetime.strftime("%d/%m/%Y %H:%M") %></p>
 <p>Called by: <%= @meeting.get_manager.name || @meeting.get_manager.email%></p>
 <p>Subject: <%= @meeting.subject %></p>
 
+&nbsp;&nbsp;<b>Topics</b> that will be discuss:</br>
+		<ul>
+		<% @meeting.topics.each do |topic| %>
+			<li><%= topic.title %></li>
+		<% end %>
+		</ul>
+<br>
+
 <p>You can check the updates <a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" >here</a>.</p>
+
+<p>Here is the <a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" >link</a> to the meeting. You can always access the meeting through our website, just create an account and login.</p>
+
+Thank you for using EMeeting!
 
