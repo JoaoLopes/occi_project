@@ -1,7 +1,7 @@
 BUGS
 	Deadline no AI não aparece o datepicker - Fixed by lopes
 	AI aparecem dois botoes seguidos e alguns bugs nos inputs - Fixed by lopes
-	Quando se altera uma meeting os rsvp ja respondidos vao a vida
+	Quando se altera uma meeting os rsvp ja respondidos vao a vida - Fixed by lopes
 	
 TODOs
 	Fazer parse de emais do outlook - NOME (EMAIL);NOME (EMAIL); (EMAIL)
