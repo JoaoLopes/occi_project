@@ -16,10 +16,17 @@
 	}
 
 	function parse_emails(text_area) {
-		emails = text_area.value.split(",");
+		emails = text_area.value.split(/[,;]/);
 		txt = "";
 		for (i=0;i<emails.length;i++) {
 			emails[i] = emails[i].trim();
+			p = emails[i].indexOf('(');
+			if (p!=-1) {
+				if(emails[i].substring(0,p-1).length===0)
+					emails[i] = '<'+emails[i].substring(p+1,(emails[i].length-1))+'>'
+				else
+					emails[i] = "\"" + emails[i].substring(0,p-1) + "\" <"+emails[i].substring(p+1,(emails[i].length-1)) + ">"
+			}
 			if (emails[i].length == 0)
 				continue;
 			if (emails[i].indexOf('"') == -1 && emails[i].indexOf('<') != -1)
