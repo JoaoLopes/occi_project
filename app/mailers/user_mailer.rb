@@ -18,4 +18,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => "#{@manager.name} <#{@manager.email}>", :subject => "Your new meeting data!")
   end
   
+  def changed_meeting(meeting, user)
+    @meeting = meeting
+    mail(:to => "#{user.name} <#{user.email}>", :subject => "Meeting updated ("+meeting.subject+")")
+  end
+  
 end

@@ -136,6 +136,10 @@ class MeetingController < ApplicationController
             @meeting.closed = true
             @meeting.save
         end
+        users = @meeting.users
+        users.each do |m|
+            UserMailer.changed_meeting(@meeting, m).deliver
+        end
         flash[:notice] = "Meeting Updated"
         redirect_to :action => 'show', :id => @meeting.user_link
         return

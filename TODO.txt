@@ -5,9 +5,9 @@ BUGS
 	
 TODOs
 	Fazer parse de emais do outlook - NOME (EMAIL);NOME (EMAIL); (EMAIL)
-	Enviar email para a pessoa que é atribuido um AI? Receber link diretamente no email para a resposta?
+	Enviar email para a pessoa que é atribuido um AI? Receber link diretamente no email para a resposta? - lopes says: not duable
 	Enviar email para manager aquando da criação da reunião - done by lopes
-	Enviar email aquando da alteracao da reuniao
+	Enviar email aquando da alteracao da reuniao - done by lopes
 	Enviar um email com a minuta(PDF) aquando do fecho da reuniao
 	No show alterar o estado do AI
 	No manage alterar o estado de Presence
