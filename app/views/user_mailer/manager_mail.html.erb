@@ -1,9 +1,18 @@
 <p>Hello,</p>
 
-<p>you have scheduled a meeting.</p>
+<p>You have scheduled a meeting to <%= @meeting.datetime.strftime("%d/%m/%Y %H:%M") %></p>
 
 <p>Subject: <%= @meeting.subject %></p>
+&nbsp;&nbsp;<b>Topics</b> that will be discuss:</br>
+		<ul>
+		<% @meeting.topics.each do |topic| %>
+			<li><%= topic.title %></li>
+		<% end %>
+		</ul>
+<br>
 
 <p>Here are your links</p>
-<p><a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" > View   meeting </a></p>
-<p><a href="http://localhost:3000/meeting/manage/<%= @meeting.manager_link %>" target="_blank" > Manage meeting </a></p>
+<p><a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" >View  meeting</a></p>
+<p><a href="http://localhost:3000/meeting/manage/<%= @meeting.manager_link %>" target="_blank" >Manage meeting</a></p>
+
+Thank you for using EMeeting!

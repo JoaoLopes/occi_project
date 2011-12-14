@@ -1,7 +1,7 @@
 BUGS
 	Deadline no AI não aparece o datepicker - Fixed by lopes
 	AI aparecem dois botoes seguidos e alguns bugs nos inputs - Fixed by lopes
-	
+	Quando se altera uma meeting os rsvp ja respondidos vao a vida
 	
 TODOs
 	Fazer parse de emais do outlook - NOME (EMAIL);NOME (EMAIL); (EMAIL)
@@ -13,3 +13,6 @@ TODOs
 	No manage alterar o estado de Presence
 	RSVP - feito por lopes
 	
+	
+http://localhost:3000/meeting/rsvp/
+
