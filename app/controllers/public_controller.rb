@@ -13,8 +13,4 @@ class PublicController < ApplicationController
     end
   end
 
-  def show
-    
-  end
-
 end
