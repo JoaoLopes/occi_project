@@ -193,6 +193,7 @@ class MeetingController < ApplicationController
       UserMailer.guest_mail(@meeting, guest).deliver
     end
     logger.debug "##############################################################\n\n\n"
+    UserMailer.manager_mail(@meeting).deliver
     flash[:notice] = "Meeting created successfully"
     redirect_to :action => "show", :id => @meeting.user_link
   end
