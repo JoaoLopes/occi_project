@@ -11,5 +11,7 @@ TODOs
 	Enviar um email com a minuta(PDF) aquando do fecho da reuniao
 	No show alterar o estado do AI
 	No manage alterar o estado do AI e Presence
+	RSVP - feito por lopes
 	
 	
+http://localhost:3000/meeting/rsvp/
