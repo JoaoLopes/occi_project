@@ -1,4 +1,4 @@
-
+<% @page_title = @meeting.subject %>
 <div id="stylized" class="myform" style="height:100%;">
 	<h1><%= @meeting.subject %></h1>
 	<p>Called by 
@@ -22,14 +22,39 @@
 			<small>Who will attend</small>
 		</td>
 		<td style="line-height:200%;">
-			<% @meeting.get_guests.each do |guest| %>
-				<% if guest.name%>
-					<%=guest.name%> (<%= guest.email %>)
-				<% else%>
-					<%= guest.email%>
-				<%end%>
-				<br>
-			<% end %>
+			
+			<table>
+				<tr>
+					<th></th>
+					<th>RSVP</th>
+					<th>Present</th>
+				</tr>
+				<% @meeting.get_guests.each do |guest|%>
+					<tr>
+						<td>
+							<% if guest.name%>
+								<%=guest.name%> (<%= guest.email %>)
+							<% else%>
+								<%= guest.email%>
+							<% end %>
+						</td>
+						<td>
+							<% case @meeting.meeting_people.find_by_user_id(guest.id).rsvp 
+						when "x" %> ?
+						<% when "a" %> Attending
+						<% when "n" %> Not Attending
+							<% end %>
+						</td>
+						<td>
+							<% if check_box_tag @meeting.meeting_people.find_by_user_id(guest.id).present %>
+								Yes
+							<% else %>
+								No
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
 		</td>
 	</tr>
 	

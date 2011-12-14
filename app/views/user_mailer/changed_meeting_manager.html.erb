@@ -1,0 +1,22 @@
+<p>Hello,</p>
+
+<p>A meeting that you created has been updated.</p>
+
+<p>Date: <%= @meeting.datetime.strftime("%d/%m/%Y %H:%M") %></p
+<p>Subject: <%= @meeting.subject %></p>
+
+&nbsp;&nbsp;<b>Topics</b> that will be discuss:</br>
+		<ul>
+		<% @meeting.topics.each do |topic| %>
+			<li><%= topic.title %></li>
+		<% end %>
+		</ul>
+<br>
+
+<p>You can check the updates in the links below</p>
+
+<p>Here are your links</p>
+<p><a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" >View  meeting</a></p>
+<p><a href="http://localhost:3000/meeting/manage/<%= @meeting.manager_link %>" target="_blank" >Manage meeting</a></p>
+
+Thank you for using EMeeting!
