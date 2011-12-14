@@ -1,13 +1,21 @@
 <p>Hello,</p>
 
-<p>you have been invited to a meeting.</p>
+<p>you have been invited to a meeting at <%= @meeting.datetime.strftime("%d/%m/%Y %H:%M") %></p>
 
-<p>Called by: <%= @meeting.get_manager.name || @meeting.get_manager.email%></p>
-<p>Subject: <%= @meeting.subject %></p>
-
-
-<p><%= @meeting.get_manager.name || @meeting.get_manager.email%> Would like to know if you are available to that meeting, please visit our website to confirm that you will be present.</p>
-<p><a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" > View meeting </a></p>
+<p><b>Called by:</b> <%= @meeting.get_manager.name || @meeting.get_manager.email%></p>
+<p><b>Subject:</b> <%= @meeting.subject %></p>
+	
+&nbsp;&nbsp;Topics that will be discuss:</br>
+		<ul>
+		<% @meeting.topics.each do |topic| %>
+			<li><%= topic.title %></li>
+		<% end %>
+		</ul>
+<br>
 
 <p>Will you attend?</p>
-<p><a href="http://localhost:3000/meeting/rsvp/<%= @meeting.user_link %>?user_id=<%= @user.permalink %>&rsvp=1" target="_blank" >Yes</a></p><p><a href="http://localhost:3000/meeting/rsvp/<%= @meeting.user_link %>?user_id=<%= @user.permalink %>&rsvp=0" target="_blank" >No</p>
+<p><a href="http://localhost:3000/meeting/rsvp/<%= @meeting.user_link %>?user_id=<%= @user.permalink %>&rsvp=1" target="_blank" >Yes</a> <a href="http://localhost:3000/meeting/rsvp/<%= @meeting.user_link %>?user_id=<%= @user.permalink %>&rsvp=0" target="_blank" >No</p>
+	
+<p>Here is the <a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" >link</a> to the meeting. You can also view the meeting by our website, just create an account and login.</p>
+
+Thank you for using EMeeting!
