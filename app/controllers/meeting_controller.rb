@@ -127,9 +127,21 @@ class MeetingController < ApplicationController
           render :action => 'manage'
           return
         end
-        @meeting.clear_guests
+        
         guests.each do |guest|
           @meeting.add_guest(guest)
+          m = @meeting.meeting_people.find_by_user_id(guest.id)
+          m.present = false
+          m.save
+        end
+        
+        
+        presents = params[:present]
+        presents.each do |presence|
+            m = @meeting.meeting_people.find_by_user_id(presence[0].to_i)
+            m.present = presence[1] == 'on' ?  true :  false
+            puts "Saving: "+m.present?.to_s
+            m.save
         end
         
         if params[:commit] == "Close Meeting"

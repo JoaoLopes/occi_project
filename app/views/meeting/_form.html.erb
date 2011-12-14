@@ -86,7 +86,7 @@
 			<% when "n" %> Not Attending
 				<% end %>
 			</td>
-			<td><% check_box_tag @meeting.meeting_people.find_by_user_id(guest.id).present %></td>
+			<td><%= check_box_tag "[present]["+guest.id.to_s+"]", nil, @meeting.meeting_people.find_by_user_id(guest.id).present  %></td>
 		</tr>
 	<% end %>
 </table>
