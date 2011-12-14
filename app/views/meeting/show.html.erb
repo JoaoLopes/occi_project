@@ -46,7 +46,7 @@
 							<% end %>
 						</td>
 						<td>
-							<% if check_box_tag @meeting.meeting_people.find_by_user_id(guest.id).present %>
+							<% if @meeting.meeting_people.find_by_user_id(guest.id).present %>
 								Yes
 							<% else %>
 								No

@@ -29,4 +29,16 @@ class UserMailer < ActionMailer::Base
     mail(:to => "#{@manager.name} <#{@manager.email}>", :subject => "Meeting updated ("+meeting.subject+")")
   end
   
+  def closed_meeting_manager(meeting)
+  	@meeting = meeting
+    @manager = meeting.get_manager
+    mail(:to => "#{@manager.name} <#{@manager.email}>", :subject => "Meeting Closed ("+meeting.subject+")")
+  end
+  
+  def closed_meeting(meeting, user)
+  	@meeting = meeting
+    mail(:to => "#{user.name} <#{user.email}>", :subject => "Meeting Closed ("+meeting.subject+")")
+  	
+  end
+  
 end

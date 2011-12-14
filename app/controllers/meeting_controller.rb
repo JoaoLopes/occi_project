@@ -147,10 +147,19 @@ class MeetingController < ApplicationController
         if params[:commit] == "Close Meeting"
             @meeting.closed = true
             @meeting.save
-        end
-        users = @meeting.users
-        users.each do |m|
-            UserMailer.changed_meeting(@meeting, m).deliver
+            users = @meeting.get_guests
+	        users.each do |m|
+	            UserMailer.closed_meeting(@meeting, m).deliver
+	        end
+	        UserMailer.closed_meeting_manager(@meeting).deliver
+            
+            
+        else
+	        users = @meeting.get_guests
+	        users.each do |m|
+	            UserMailer.changed_meeting(@meeting, m).deliver
+	        end
+	        UserMailer.changed_meeting_manager(@meeting).deliver
         end
         flash[:notice] = "Meeting Updated"
         redirect_to :action => 'show', :id => @meeting.user_link
