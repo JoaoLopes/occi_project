@@ -12,4 +12,10 @@ class UserMailer < ActionMailer::Base
     mail(:to => "#{user.name} <#{user.email}>", :subject => "A new meeting awaits you")
   end
   
+  def manager_mail(meeting)
+    @meeting = meeting
+    @manager = meeting.get_manager
+    mail(:to => "#{@manager.name} <#{@manager.email}>", :subject => "Your new meeting data!")
+  end
+  
 end

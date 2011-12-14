@@ -1,0 +1,9 @@
+<p>Hello,</p>
+
+<p>you have scheduled a meeting.</p>
+
+<p>Subject: <%= @meeting.subject %></p>
+
+<p>Here are your links</p>
+<p><a href="http://localhost:3000/meeting/show/<%= @meeting.user_link %>" target="_blank" > View   meeting </a></p>
+<p><a href="http://localhost:3000/meeting/manage/<%= @meeting.manager_link %>" target="_blank" > Manage meeting </a></p>
