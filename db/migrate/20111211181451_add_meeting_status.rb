@@ -7,3 +7,4 @@ class AddMeetingStatus < ActiveRecord::Migration
     remove_column("meetings", "closed")
   end
 end
+
